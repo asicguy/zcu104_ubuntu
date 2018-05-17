@@ -1,5 +1,5 @@
 # zcu104_ubuntu
-##A project to demonstrate Xilinx MPSOC running Ubuntu
+## A project to demonstrate Xilinx MPSOC running Ubuntu
 
 The Xilinx Multi-Processor System On Chip (MPSOC) devices provide agile solutions to a large class of problems. One application that is rarely discussed is their use as design verification engines. Many custom logic blocks contain so much complexity that it is impossible to adequately verify them using traditional simulation techniques.  A fast microprocessor, tightly coupled to a high performance FPGA fabric is ideal for running logic through vast test sets. Once running, hardware verification can have a six order of magnitude speed increase compared to simulation.
 
