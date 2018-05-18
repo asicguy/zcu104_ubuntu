@@ -1,5 +1,7 @@
 //
-module top ();
+module top (
+    output logic [3:0] led
+);
 
     logic [39:0]    M00_AXI_araddr;
     logic [2:0]     M00_AXI_arprot;
@@ -53,6 +55,8 @@ module top ();
 
     assign slv_read[0] = 32'hdeadbeef;
     assign slv_read[1] = 32'h76543210;
+
+    assign led = slv_reg[2][3:0]; // control the LEDs.
 
     assign slv_read[15:2] = slv_reg[15:2];
 
