@@ -7,3 +7,10 @@ When testing logic it is ideal to have a complete desktop Linux distribution run
 
 This goal of this project is to demonstrate Ubuntu running on MPSOC for the purpose of logic verification.
 
+### ToDo:
+- **Create an FPGA Test Design** - This is mostly complete. CPU can access a BRAM and a register file.
+- **Create the First Stage Boot Loader** - The FSBL is automatically generated and is more or less required to get the Arm cores running.
+- **Install Das U-Boot** - This is the the bootloader most commonly used for embedded systems. It is really a small operating system in itself that can be used to run programs, access networks, test memory and boot other operating systems.  In this installation it functions as a Second Stage Boot Loader.
+- **Install SSD** - The ZCU104 provides a slot for an SSD. The format is M.2 2242 which is unusual but readily available.  It would be very nice to run Ubuntu from a true SSD.  The small SD Card on the board can be used to run Linux well but those memory cards do not do wear levelling nor the other things that SSD drives do to provide reliability.
+- **Install GRUB2** - If we are able to use U-Boot to load and run programs from the SSD we should be able to install GRUB2. Running GRUB2 would allow Ubuntu software update services to update the kernel itself. Everything would run like a real x86 Ubuntu desktop machine.
+- **Demonstrate large-scale hardware verification** - We need suggestions on this.
