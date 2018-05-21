@@ -30,7 +30,7 @@ updatemss -mss $sdk_dir/$bsp/system.mss
 regenbsp -bsp $bsp
 
 # Create new application project as Empty Application 
-createapp -name $application -app {Empty Application} -proc $proc -hwproject $hwproject -bsp $bsp -os $os
+#createapp -name $application -app {Empty Application} -proc $proc -hwproject $hwproject -bsp $bsp -os $os
 createapp -name $fsbl -app {Zynq MP FSBL} -proc $proc -hwproject $hwproject -bsp $bsp -os $os
 
 # add the libm math library to the linker script.
