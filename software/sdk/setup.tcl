@@ -1,3 +1,5 @@
+# execute this scipt with this command "xsdk -batch -source setup.tcl"
+
 set sdk_dir .
 
 
@@ -39,4 +41,6 @@ createapp -name $fsbl -app {Zynq MP FSBL} -proc $proc -hwproject $hwproject -bsp
 # Clean and build all projects
 projects -clean
 projects -build
+
+exec bootgen -arch zynqmp -image output.bif -w -o BOOT.bin
 
