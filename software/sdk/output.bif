@@ -1,6 +1,6 @@
 //arch = zynq; split = false; format = BIN
 the_ROM_image:
 {
-	[bootloader]/home/pedro/github/zcu104_ubuntu/software/sdk/fsbl/Debug/fsbl.elf
-	/home/pedro/github/zcu104_ubuntu/software/u-boot-xlnx/u-boot.elf
+	[bootloader]./fsbl/Debug/fsbl.elf
+	../u-boot-xlnx/u-boot.elf
 }
