@@ -18,7 +18,7 @@
 - make ARCH=arm64
 - ls -lh arch/arm64/boot/Image
 ## Format MicroSD card
-- I use a Samsung Ultra PLUS 32GB MicrSD card.
+- I use a SanDisk Ultra PLUS 32GB MicrSD card.
 - Use USB adapter to connect it to your Linux workstation.
 - sudo gparted
 - Carefully select the SD card as the device.  It should be obvious by size.
