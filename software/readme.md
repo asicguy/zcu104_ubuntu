@@ -30,10 +30,9 @@
 - xsdk -batch -source setup.tcl
 - The above step automates everything you need to do in XSDK, starting from the .hdf file.
 - BOOT.bin is the first stage boot loader (FSBL) combined with u-boot into a single boot image.
-- cp BOOT.bin /media/\<path to boot partition on microSD card\>/BOOT
+- cp BOOT.bin /\<path to boot partition on microSD card\>/BOOT
 ## Get Ubuntu root filesystem
-- wget .................
-- copy to sd card?
-
-
-
+- We'll try to run Ubuntu 16.04 LTS
+- wget https://releases.linaro.org/debian/images/developer-arm64/16.04/linaro-jessie-developer-20160428-75.tar.gz
+- sudo tar -zxvf linaro-jessie-developer-20160428-75.tar.gz
+- sudo cp -r binary/* /\<path to boot partition on microSD card\>/rootfs/
