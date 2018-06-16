@@ -49,14 +49,16 @@ module top (
         .axi_aclk           (axi_aclk),
         .axi_aresetn        (axi_aresetn)
     );
+    
+    logic [27:0] led_count;
+    always_ff @(posedge axi_aclk) led_count <= led_count + 1;
+    assign led = led_count[27:24]; 
 
     // This register file gives software contol over unit under test (UUT).
     logic [15:0][31:0] slv_reg, slv_read;
 
     assign slv_read[0] = 32'hdeadbeef;
     assign slv_read[1] = 32'h76543210;
-
-    assign led = slv_reg[2][3:0]; // control the LEDs.
 
     assign slv_read[15:2] = slv_reg[15:2];
 

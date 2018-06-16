@@ -52,5 +52,6 @@ createapp -name $pmufw -app {ZynqMP PMU Firmware} -proc "psu_pmu_0" -hwproject $
 projects -clean
 projects -build
 
-exec bootgen -arch zynqmp -image output.bif -w -o BOOT.bin
+puts "generating BOOT.bin from images"
+exec bootgen -arch zynqmp -w on -log trace -image output.bif -w -o BOOT.bin
 

@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.1 (lin64) Build 2188600 Wed Apr  4 18:39:19 MDT 2018
-| Date         : Wed Jun 13 07:35:32 2018
+| Date         : Sat Jun 16 15:27:12 2018
 | Host         : pedro-crucial-250 running 64-bit Ubuntu 16.04.4 LTS
 | Command      : report_utilization -file ./results/post_route_utilization.rpt
 | Design       : top
@@ -32,15 +32,15 @@ Table of Contents
 +----------------------------+-------+-------+-----------+-------+
 |          Site Type         |  Used | Fixed | Available | Util% |
 +----------------------------+-------+-------+-----------+-------+
-| CLB LUTs                   | 10291 |     0 |    230400 |  4.47 |
-|   LUT as Logic             |  8310 |     0 |    230400 |  3.61 |
+| CLB LUTs                   | 10284 |     0 |    230400 |  4.46 |
+|   LUT as Logic             |  8303 |     0 |    230400 |  3.60 |
 |   LUT as Memory            |  1981 |     0 |    101760 |  1.95 |
 |     LUT as Distributed RAM |   796 |     0 |           |       |
 |     LUT as Shift Register  |  1185 |     0 |           |       |
-| CLB Registers              | 13182 |     0 |    460800 |  2.86 |
-|   Register as Flip Flop    | 13182 |     0 |    460800 |  2.86 |
+| CLB Registers              | 13206 |     0 |    460800 |  2.87 |
+|   Register as Flip Flop    | 13206 |     0 |    460800 |  2.87 |
 |   Register as Latch        |     0 |     0 |    460800 |  0.00 |
-| CARRY8                     |    45 |     0 |     28800 |  0.16 |
+| CARRY8                     |    49 |     0 |     28800 |  0.17 |
 | F7 Muxes                   |   116 |     0 |    115200 |  0.10 |
 | F8 Muxes                   |    53 |     0 |     57600 |  0.09 |
 | F9 Muxes                   |     0 |     0 |     28800 |  0.00 |
@@ -62,7 +62,7 @@ Table of Contents
 | 40    |          Yes |           - |          Set |
 | 171   |          Yes |           - |        Reset |
 | 394   |          Yes |         Set |            - |
-| 12577 |          Yes |       Reset |            - |
+| 12601 |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -72,13 +72,13 @@ Table of Contents
 +-------------------------------------------+------+-------+-----------+-------+
 |                 Site Type                 | Used | Fixed | Available | Util% |
 +-------------------------------------------+------+-------+-----------+-------+
-| CLB                                       | 2179 |     0 |     28800 |  7.57 |
-|   CLBL                                    | 1127 |     0 |           |       |
-|   CLBM                                    | 1052 |     0 |           |       |
-| LUT as Logic                              | 8310 |     0 |    230400 |  3.61 |
-|   using O5 output only                    |  320 |       |           |       |
-|   using O6 output only                    | 6248 |       |           |       |
-|   using O5 and O6                         | 1742 |       |           |       |
+| CLB                                       | 2180 |     0 |     28800 |  7.57 |
+|   CLBL                                    | 1111 |     0 |           |       |
+|   CLBM                                    | 1069 |     0 |           |       |
+| LUT as Logic                              | 8303 |     0 |    230400 |  3.60 |
+|   using O5 output only                    |  310 |       |           |       |
+|   using O6 output only                    | 6243 |       |           |       |
+|   using O5 and O6                         | 1750 |       |           |       |
 | LUT as Memory                             | 1981 |     0 |    101760 |  1.95 |
 |   LUT as Distributed RAM                  |  796 |     0 |           |       |
 |     using O5 output only                  |    0 |       |           |       |
@@ -88,10 +88,10 @@ Table of Contents
 |     using O5 output only                  |    0 |       |           |       |
 |     using O6 output only                  |  933 |       |           |       |
 |     using O5 and O6                       |  252 |       |           |       |
-| LUT Flip Flop Pairs                       | 6212 |     0 |    230400 |  2.70 |
-|   fully used LUT-FF pairs                 | 1490 |       |           |       |
-|   LUT-FF pairs with one unused LUT output | 4618 |       |           |       |
-|   LUT-FF pairs with one unused Flip Flop  | 3228 |       |           |       |
+| LUT Flip Flop Pairs                       | 6230 |     0 |    230400 |  2.70 |
+|   fully used LUT-FF pairs                 | 1497 |       |           |       |
+|   LUT-FF pairs with one unused LUT output | 4623 |       |           |       |
+|   LUT-FF pairs with one unused Flip Flop  | 3227 |       |           |       |
 | Unique Control Sets                       |  665 |       |           |       |
 +-------------------------------------------+------+-------+-----------+-------+
 * Note: Review the Control Sets Report for more information regarding control sets.
@@ -207,7 +207,7 @@ Table of Contents
 +----------+-------+---------------------+
 | Ref Name |  Used | Functional Category |
 +----------+-------+---------------------+
-| FDRE     | 12577 |            Register |
+| FDRE     | 12601 |            Register |
 | LUT6     |  3107 |                 CLB |
 | LUT4     |  2697 |                 CLB |
 | LUT3     |  1580 |                 CLB |
@@ -217,12 +217,12 @@ Table of Contents
 | LUT2     |   902 |                 CLB |
 | FDSE     |   394 |            Register |
 | SRL16E   |   371 |                 CLB |
-| LUT1     |   207 |                 CLB |
+| LUT1     |   208 |                 CLB |
 | RAMS32   |   198 |                 CLB |
 | FDCE     |   171 |            Register |
 | MUXF7    |   116 |                 CLB |
 | MUXF8    |    53 |                 CLB |
-| CARRY8   |    45 |                 CLB |
+| CARRY8   |    49 |                 CLB |
 | FDPE     |    40 |            Register |
 | RAMB36E2 |     6 |           Block Ram |
 | OBUF     |     4 |                 I/O |
