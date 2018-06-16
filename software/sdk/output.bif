@@ -3,8 +3,8 @@ the_ROM_image:
 {
     //[fsbl_config]a53_x64
     [pmufw_image]./pmufw/Debug/pmufw.elf
-	//[bootloader]./fsbl/Debug/fsbl.elf
-	[bootloader,destination_cpu=a5x-0]./fsbl/Debug/fsbl.elf
+    //[bootloader]./fsbl/Debug/fsbl.elf
+    [bootloader,destination_cpu=a5x-0]./fsbl/Debug/fsbl.elf
     [destination_device=pl]../../fpga/implement/results/top.bit
     [destination_cpu=a5x-0]../u-boot-xlnx/u-boot.elf
 }
