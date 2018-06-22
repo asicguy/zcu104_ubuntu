@@ -8,7 +8,6 @@ set fsbl "fsbl"
 set pmufw "pmufw"
 set pmubsp "pmubsp"
 set hwspec ../../fpga/implement/results/top.hdf
-set proc "psu_cortexa53_0"
 set os "standalone"
 
 # delete the old
@@ -25,7 +24,7 @@ setws $sdk_dir
 createhw -name $hwproject -hwspec $hwspec
 
 # Create Arm bsp
-createbsp -name $bsp -hwproject $hwproject -proc $proc -os $os
+createbsp -name $bsp -hwproject $hwproject -proc "psu_cortexa53_0" -os $os
 setlib -bsp $bsp -lib xilffs
 setlib -bsp $bsp -lib xilsecure
 setlib -bsp $bsp -lib xilpm
@@ -44,7 +43,7 @@ updatemss -mss $sdk_dir/$pmubsp/system.mss
 regenbsp -bsp $pmubsp
 
 # Create new application project as Empty Application 
-createapp -name $fsbl  -app {Zynq MP FSBL} -proc $proc -hwproject $hwproject -bsp $bsp -os $os
+createapp -name $fsbl  -app {Zynq MP FSBL} -proc "psu_cortexa53_0" -hwproject $hwproject -bsp $bsp -os $os
 
 createapp -name $pmufw -app {ZynqMP PMU Firmware} -proc "psu_pmu_0" -hwproject $hwproject -bsp $pmubsp -os $os
 
