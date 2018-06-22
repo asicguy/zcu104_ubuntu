@@ -4,13 +4,21 @@
 - install Xilinx SDK 2018.1
 - source /opt/Xilinx/Vivado/2018.1/settings64.sh
 - export CROSS_COMPILE=aarch64-linux-gnu-
+## Build bl31.elf - Arm Trusted Firmware
+- cd \<git clone location\>/zcu104_ubuntu/software
+- git clone https://github.com/Xilinx/arm-trusted-firmware.git
+- cd arm-trusted-firmware
+- make
+- Output image is ./build/fvp/release/bl31/bl31.elf
 ## Build Das U-Boot
+- cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/u-boot-xlnx.git
 - cd u-boot-xlnx/
 - make  xilinx_zynqmp_zcu104_revA_defconfig
 - make
 - "u-boot" is the resulting elf image.
 ## Build the Linux Kernel
+- cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/linux-xlnx.git
 - cd linux-xlnx/
 - make ARCH=arm64 xilinx_zynqmp_defconfig
