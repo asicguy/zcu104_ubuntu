@@ -44,6 +44,7 @@ regenbsp -bsp $pmubsp
 
 # Create new application project as Empty Application 
 createapp -name $fsbl  -app {Zynq MP FSBL} -proc "psu_cortexa53_0" -hwproject $hwproject -bsp $bsp -os $os
+configapp -app  $fsbl define-compiler-symbols FSBL_DEBUG_INFO
 
 createapp -name $pmufw -app {ZynqMP PMU Firmware} -proc "psu_pmu_0" -hwproject $hwproject -bsp $pmubsp -os $os
 
