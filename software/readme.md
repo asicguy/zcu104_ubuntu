@@ -8,8 +8,8 @@
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/arm-trusted-firmware.git
 - cd arm-trusted-firmware
-- make
-- Output image is ./build/fvp/release/bl31/bl31.elf
+- make PLAT=zynqmp RESET_TO_BL31=1
+- Output image is ../arm-trusted-firmware/build/zynqmp/release/bl31/bl31.elf
 ## Build Das U-Boot
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/u-boot-xlnx.git
