@@ -9,9 +9,7 @@
 - git clone https://github.com/Xilinx/arm-trusted-firmware.git
 - cd arm-trusted-firmware
 - git checkout xilinx-v2017.4
-- export CROSS_COMPILE=aarch64-linux-gnu-
-- export ARCH=aarch64
-- make DEBUG=0 RESET_TO_BL31=1 PLAT=zynqmp bl31
+- make ARCH=aarch64 DEBUG=0 RESET_TO_BL31=1 PLAT=zynqmp bl31
 - Output image is ../arm-trusted-firmware/build/zynqmp/release/bl31/bl31.elf
 ## Build Das U-Boot
 - cd \<git clone location\>/zcu104_ubuntu/software
