@@ -17,7 +17,7 @@
 - cd u-boot-xlnx/
 - make  xilinx_zynqmp_zcu104_revA_defconfig
 - make
-- "u-boot" is the resulting elf image.
+- "u-boot.elf" is the resulting elf image.
 ## Build the Linux Kernel
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/linux-xlnx.git
