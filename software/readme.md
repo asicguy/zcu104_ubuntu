@@ -2,7 +2,7 @@
 
 ## Setup Compiler Toolchain
 - install Xilinx SDK 2018.1
-- source /opt/Xilinx/Vivado/2018.1/settings64.sh
+- source /opt/Xilinx/SDK/2018.2/settings64.sh
 - export CROSS_COMPILE=aarch64-linux-gnu-
 ## Build bl31.elf - Arm Trusted Firmware
 - cd \<git clone location\>/zcu104_ubuntu/software
@@ -15,9 +15,15 @@
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/u-boot-xlnx.git
 - cd u-boot-xlnx/
+- git checkout xilinx-v2018.2
 - make  xilinx_zynqmp_zcu104_revA_defconfig
 - make
 - "u-boot.elf" is the resulting elf image.
+## Create BOOT.bin
+BOOT.bin is a collection of compiled software moudules and an FPGA .bit file. It is produced automatically here by a TCL script that runs in XSDK.
+- cd \<git clone location\>/zcu104_ubuntu/software/sdk
+- xsdk -batch -source setup.tcl
+- BOOT.bin is the output file.
 ## Build the Linux Kernel
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/linux-xlnx.git
