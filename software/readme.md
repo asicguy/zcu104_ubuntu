@@ -1,7 +1,7 @@
 # Notes on Software compilation.
 
 ## Setup Compiler Toolchain
-- install Xilinx SDK 2018.1
+- install Xilinx SDK 2018.2
 - source /opt/Xilinx/SDK/2018.2/settings64.sh
 - export CROSS_COMPILE=aarch64-linux-gnu-
 ## Build bl31.elf - Arm Trusted Firmware
