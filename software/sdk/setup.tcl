@@ -28,8 +28,6 @@ createbsp -name $bsp -hwproject $hwproject -proc "psu_cortexa53_0" -os $os
 setlib -bsp $bsp -lib xilffs
 setlib -bsp $bsp -lib xilsecure
 setlib -bsp $bsp -lib xilpm
-
-# Update the microprocessor software spec (MSS) and regenerate the BSP
 updatemss -mss $sdk_dir/$bsp/system.mss
 regenbsp -bsp $bsp
 
@@ -37,14 +35,12 @@ regenbsp -bsp $bsp
 createbsp -name $pmubsp -hwproject $hwproject -proc "psu_pmu_0" -os "standalone"
 setlib -bsp $pmubsp -lib xilfpga
 setlib -bsp $pmubsp -lib xilsecure
-
-# Update the microprocessor software spec (MSS) and regenerate the BSP
 updatemss -mss $sdk_dir/$pmubsp/system.mss
 regenbsp -bsp $pmubsp
 
 # Create new application project as Empty Application 
 createapp -name $fsbl  -app {Zynq MP FSBL} -proc "psu_cortexa53_0" -hwproject $hwproject -bsp $bsp -os $os
-configapp -app  $fsbl define-compiler-symbols FSBL_DEBUG_INFO
+#configapp -app  $fsbl define-compiler-symbols FSBL_DEBUG_INFO
 
 createapp -name $pmufw -app {ZynqMP PMU Firmware} -proc "psu_pmu_0" -hwproject $hwproject -bsp $pmubsp -os $os
 

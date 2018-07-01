@@ -1,5 +1,6 @@
 # Notes on Software compilation.
-
+!Caution: These instruction do not currently work!
+These instructions attempt to compile everythng from primary sources. Xilinx calls this the OSL flow.
 ## Setup Compiler Toolchain
 - install Xilinx SDK 2018.2
 - source /opt/Xilinx/SDK/2018.2/settings64.sh
