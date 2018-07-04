@@ -1,15 +1,17 @@
 # Notes on Software compilation.
 !Caution: These instruction do not currently work!
+
 These instructions attempt to compile everythng from primary sources. Xilinx calls this the OSL flow.
 ## Setup Compiler Toolchain
 - install Xilinx SDK 2018.2
 - source /opt/Xilinx/SDK/2018.2/settings64.sh
 - export CROSS_COMPILE=aarch64-linux-gnu-
 ## Build bl31.elf - Arm Trusted Firmware
+ATF is something new with the 64 bit Arm processors. It has something to do with secure access to hardware features of the chip but for most users it is a black box.  ATF must be compiled and included in the ZynqMP boot image.
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/arm-trusted-firmware.git
 - cd arm-trusted-firmware
-- git checkout xilinx-v2017.4
+- git checkout xilinx-v2018.2
 - make ARCH=aarch64 DEBUG=0 RESET_TO_BL31=1 PLAT=zynqmp bl31
 - Output image is ../arm-trusted-firmware/build/zynqmp/release/bl31/bl31.elf
 ## Build Das U-Boot
