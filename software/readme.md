@@ -1,12 +1,15 @@
 # Notes on Software compilation.
-!Caution: These instruction do not currently work!
-
-These instructions attempt to compile everythng from primary sources. Xilinx calls this the OSL flow.
+These instructions attempt to compile everythng from primary sources (except the ATF). Xilinx calls this the OSL flow.
 ## Setup Compiler Toolchain
 - install Xilinx SDK 2018.2
 - source /opt/Xilinx/SDK/2018.2/settings64.sh
 - export CROSS_COMPILE=aarch64-linux-gnu-
 ## Build bl31.elf - Arm Trusted Firmware
+! Caution: the build instructions below for bl31.elf do not work! Instead use the bl31.elf in the zip file found here: 
+    https://www.xilinx.com/member/forms/download/design-license-xef.html?akdm=1&filename=zcu104-rv-ss-2017-4.zip
+
+That elf file is committed to the sdk folder of this git repository and output.bif is modified to point to it.
+
 ATF is something new with the 64 bit Arm processors. It has something to do with secure access to hardware features of the chip but for most users it is a black box.  ATF must be compiled and included in the ZynqMP boot image.
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/arm-trusted-firmware.git
