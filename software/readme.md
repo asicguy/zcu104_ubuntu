@@ -34,6 +34,7 @@ BOOT.bin is a collection of compiled software moudules and an FPGA .bit file. It
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/linux-xlnx.git
 - cd linux-xlnx/
+- git checkout xilinx-v2018.2
 - make ARCH=arm64 xilinx_zynqmp_defconfig
 - make ARCH=arm64 menuconfig
 - make ARCH=arm64
