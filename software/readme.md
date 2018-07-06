@@ -30,6 +30,20 @@ BOOT.bin is a collection of compiled software moudules and an FPGA .bit file. It
 - cd \<git clone location\>/zcu104_ubuntu/software/sdk
 - xsdk -batch -source setup.tcl
 - BOOT.bin is the output file.
+## Format MicroSD card
+- I use a SanDisk Ultra PLUS 32GB MicrSD card.
+- Use USB adapter to connect it to your Linux workstation.
+- sudo gparted
+- Carefully select the SD card as the device.  It should be obvious by size.
+- Delete any existing partitions. (!Make sure you are operating on the SD card!)
+- Create FAT32 partion called BOOT, 64MB, starting at the default low address.
+- Create ext4 partition called rootfs, using the rest of the SD card.
+## Build boot.bin
+- cd sdk
+- xsdk -batch -source setup.tcl
+- The above step automates everything you need to do in XSDK, starting from the .hdf file.
+- BOOT.bin is the first stage boot loader (FSBL) combined with u-boot into a single boot image.
+- cp BOOT.bin /\<path to boot partition on microSD card\>
 ## Build the Linux Kernel
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/linux-xlnx.git
@@ -39,22 +53,10 @@ BOOT.bin is a collection of compiled software moudules and an FPGA .bit file. It
 - make ARCH=arm64 menuconfig
 - make ARCH=arm64
 - ls -lh arch/arm64/boot/Image
-## Format MicroSD card
-- I use a SanDisk Ultra PLUS 32GB MicrSD card.
-- Use USB adapter to connect it to your Linux workstation.
-- sudo gparted
-- Carefully select the SD card as the device.  It should be obvious by size.
-- Delete any existing partitions. (!Make sure you are operating on the SD card!)
-- Create FAT32 partion called BOOT, 64MB, starting at the default low address.
-- Create ext4 partition called rootfs, using rest of SD card.
-## Build boot.bin
-- cd sdk
-- xsdk -batch -source setup.tcl
-- The above step automates everything you need to do in XSDK, starting from the .hdf file.
-- BOOT.bin is the first stage boot loader (FSBL) combined with u-boot into a single boot image.
-- cp BOOT.bin /\<path to boot partition on microSD card\>/BOOT
+- cp arch/arm64/boot/Image /media/pedro/BOOT/
 ## Get Ubuntu root filesystem
 - We'll try to run Ubuntu 16.04 LTS
 - wget https://releases.linaro.org/debian/images/developer-arm64/16.04/linaro-jessie-developer-20160428-75.tar.gz
 - sudo tar -zxvf linaro-jessie-developer-20160428-75.tar.gz
-- sudo cp -r binary/* /\<path to boot partition on microSD card\>/rootfs/
+- sudo cp -r binary/* /\<path to rootfs partition on microSD card\>
+
