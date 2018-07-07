@@ -1,5 +1,6 @@
 # Notes on Software compilation.
-These instructions attempt to compile everythng from primary sources (except the ATF). Xilinx calls this the OSL flow.
+These instructions attempt to compile everythng from primary sources (except the ATF). Xilinx calls this the OSL flow from here:
+https://github.com/hdlguy/zcu104_ubuntu.git
 ## Setup Compiler Toolchain
 - install Xilinx SDK 2018.2
 - source /opt/Xilinx/SDK/2018.2/settings64.sh
