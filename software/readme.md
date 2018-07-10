@@ -54,6 +54,32 @@ BOOT.bin is a collection of compiled software moudules and an FPGA .bit file. It
 - make ARCH=arm64
 - ls -lh arch/arm64/boot/Image
 - cp arch/arm64/boot/Image /media/pedro/BOOT/
+## Build the Device Tree Blob (Optional)
+You can skip this step because the u-boot compilation produces a generic dtb file for your target when it compiles. The output.bif file of this repo points to that dtb and it seems to work fine.
+
+The dtb is another piece that is generated from the .hdf file.  Because I reconfigure the PL frequenly I don't like to put any of the PL logic into the device tree.  I create a ZynqMP project without anything else and export the hdf from there.
+Xilinx provides yet another github repository of stuff to build your device tree source (.dts) file. Here we go.
+- cd \<git clone location\>/zcu104_ubuntu/software
+- git clone https://github.com/Xilinx/device-tree-xlnx
+- cd device-tree-xlnx
+- git checkout xilinx-v2018.2
+
+Now we have to run yet another Xilinx command line tool called HSI and type a few commands to get the dts from our hdf. Make sure you still have the compiler tool chain setup from above.
+- hsi
+
+Now we are in HSI so run these commands.
+- open_hw_design ../../fpga/implement/results/top.hdf
+- set_repo_path .
+- create_sw_design device-tree -os device_tree -proc psu_cortexa53_0
+- generate_target -dir ../dts_files
+- exit
+
+There should be dts files in the folder specified above.
+- cd ../dts_files
+- dtc -I dts -O dtb -o system-top.dtb system-top.dts
+- cp system-top.dtb /media/pedro/BOOT/system.dtb
+
+If the dtc command above is not found you need to install the device-tree-compiler package, "sudo apt install device-tree-compiler" on Ubuntu.
 ## Get Ubuntu root filesystem
 - We'll try to run Ubuntu 16.04 LTS
 - wget https://releases.linaro.org/debian/images/developer-arm64/16.04/linaro-jessie-developer-20160428-75.tar.gz
