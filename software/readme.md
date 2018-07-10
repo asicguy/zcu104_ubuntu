@@ -56,7 +56,7 @@ BOOT.bin is a collection of compiled software moudules and an FPGA .bit file. It
 - ls -lh arch/arm64/boot/Image
 - cp arch/arm64/boot/Image /media/pedro/BOOT/
 ## Build the Device Tree Blob (Optional)
-You can skip this step because the u-boot compilation produces a generic dtb file for your target when it compiles. The output.bif file of this repo points to that dtb and it seems to work fine.
+You can skip this step because the u-boot compilation produces a generic dtb file for your target when it compiles. That one seems to work fine.
 
 The dtb is another piece that is generated from the .hdf file.  Because I reconfigure the PL frequenly I don't like to put any of the PL logic into the device tree.  I create a ZynqMP project without anything else and export the hdf from there.
 Xilinx provides yet another github repository of stuff to build your device tree source (.dts) file. Here we go.
