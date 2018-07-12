@@ -16,8 +16,8 @@ ATF is something new with the 64 bit Arm processors. It has something to do with
 - git clone https://github.com/Xilinx/arm-trusted-firmware.git
 - cd arm-trusted-firmware
 - git checkout xilinx-v2018.2
-- make ARCH=aarch64 DEBUG=0 RESET_TO_BL31=1 PLAT=zynqmp bl31
-- Output image is ../arm-trusted-firmware/build/zynqmp/release/bl31/bl31.elf
+- make ARCH=aarch64 DEBUG=1 RESET_TO_BL31=1 PLAT=zynqmp bl31
+- Output image is ../arm-trusted-firmware/build/zynqmp/debug/bl31/bl31.elf
 ## Build Das U-Boot
 - cd \<git clone location\>/zcu104_ubuntu/software
 - git clone https://github.com/Xilinx/u-boot-xlnx.git
@@ -52,7 +52,7 @@ BOOT.bin is a collection of compiled software moudules and an FPGA .bit file. It
 - git checkout xilinx-v2018.2
 - make ARCH=arm64 xilinx_zynqmp_defconfig
 - make ARCH=arm64 menuconfig
-- make ARCH=arm64
+- make ARCH=arm64 -j 8
 - ls -lh arch/arm64/boot/Image
 - cp arch/arm64/boot/Image /media/pedro/BOOT/
 ## Build the Device Tree Blob (Optional)
