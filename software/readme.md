@@ -82,3 +82,10 @@ If the dtc command above is not found you need to install the device-tree-compil
 - sudo tar -zxvf linaro-jessie-developer-20160428-75.tar.gz
 - sudo cp -r binary/* /\<path to rootfs partition on microSD card\>
 
+## How to load bitfile into PL from Linux on ZynqMP
+1. sudo -i
+1. convert top.bit file to top.bit.bin file
+1. cp top.bit.bin  /lib/firmware
+1. echo top.bit.bin > /sys/class/fpga_manager/fpga0/firmware
+
+
