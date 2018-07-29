@@ -30,5 +30,7 @@ write_bitstream      -force ./results/top.bit
 
 close_project
 
+write_cfgmem -disablebitswap -force -format BIN -size 256 -interface SMAPx32 -loadbit "up 0x0 ./results/top.bit" -verbose ./results/top.bit.bin
+
 
 
