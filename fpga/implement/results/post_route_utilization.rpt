@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date         : Sat Jun 30 11:52:42 2018
-| Host         : pedro-crucial-250 running 64-bit Ubuntu 16.04.4 LTS
+| Date         : Sun Jul 29 11:24:56 2018
+| Host         : pedro-crucial-250 running 64-bit Ubuntu 16.04.5 LTS
 | Command      : report_utilization -file ./results/post_route_utilization.rpt
 | Design       : top
 | Device       : xczu7evffvc1156-2

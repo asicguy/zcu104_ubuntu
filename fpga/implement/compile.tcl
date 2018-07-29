@@ -26,11 +26,12 @@ report_timing_summary -file ./results/post_route_timing_summary.rpt
 report_utilization    -file ./results/post_route_utilization.rpt
 
 set_property BITSTREAM.GENERAL.COMPRESS TRUE [get_designs impl_1]
-write_bitstream      -force ./results/top.bit
+#write_bitstream      -force ./results/top.bit
+write_bitstream -bin_file -force ./results/top.bit
 
 close_project
 
-write_cfgmem -disablebitswap -force -format BIN -size 256 -interface SMAPx32 -loadbit "up 0x0 ./results/top.bit" -verbose ./results/top.bit.bin
+#write_cfgmem -disablebitswap -force -format BIN -size 256 -interface SMAPx32 -loadbit "up 0x0 ./results/top.bit" -verbose ./results/top.bit.bin
 
 
 

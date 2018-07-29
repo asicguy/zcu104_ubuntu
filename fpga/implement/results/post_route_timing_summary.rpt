@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------
 | Tool Version      : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date              : Sat Jun 30 11:52:40 2018
-| Host              : pedro-crucial-250 running 64-bit Ubuntu 16.04.4 LTS
+| Date              : Sun Jul 29 11:24:54 2018
+| Host              : pedro-crucial-250 running 64-bit Ubuntu 16.04.5 LTS
 | Command           : report_timing_summary -file ./results/post_route_timing_summary.rpt
 | Design            : top
 | Device            : xczu7ev-ffvc1156
