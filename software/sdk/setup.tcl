@@ -28,5 +28,4 @@ projects -build
 
 puts "generating BOOT.bin from images"
 exec bootgen -arch zynqmp -w on -log trace -image output.bif -w -o BOOT.bin
-exec bootgen -image bitstream.bif -arch zynqmp -o ./top.bit.bin -w
 
