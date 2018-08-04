@@ -1,3 +1,9 @@
+- Download and install Xilinx Petalinux 2018.2.
+
+- Set up your environment variables. Something like this depending on where you installed Petalinux.
+
+    source /opt/Xilinx/petalinux/settings.sh
+
 - Download the the zcu104 Petalinux BSP from here
 
     https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html
@@ -21,7 +27,7 @@
         Select "SD Card"
     * Under "DTG Settings" -> 
         "Kernel Bootargs" -> 
-        Unselect "generate boot args automatically" -> 
+        Un-select "generate boot args automatically" -> 
         Enter "user set kernel bootargs" -> Paste in the following line
             earlycon clk_ignore_unused earlyprintk root=/dev/mmcblk0p2 rw rootwait cma=1024M
     * Save and exit the configuration menu. Wait for configuration to complete.
@@ -62,7 +68,7 @@
     cp images/linux/image.ub /media/pedro/BOOT/
 
     It is assumed that you already partitioned the SD card. 
-    - sudo gparted  (make sure you have the correct drive selected)
+    - sudo gparted  (make sure you have the correct drive selected!)
     - First partition called BOOT, FAT32, 512MB
     - Second partition called rootfs, ext4, use the rest of the card.
 
