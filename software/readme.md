@@ -86,7 +86,7 @@ If the dtc command above is not found you need to install the device-tree-compil
 ## How to load bitfile into PL from Linux on ZynqMP
 The fpga build script automatically generates top.bit.bin that is commited to the repository.
 1. sudo -i
-1. cd .../fpga/implement/results
+1. cd ../fpga/implement/results
 1. cp top.bit.bin  /lib/firmware
 1. echo top.bit.bin > /sys/class/fpga_manager/fpga0/firmware
 
