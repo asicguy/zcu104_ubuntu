@@ -110,15 +110,11 @@
 
 - The serial  terminal is limiting so I like to ssh into the board. First, find the ip address of the zcu104.
 
-    ifconfig
+    ifconfig (or "ip address")
 
     Then go back to your workstation.
 
     ssh myuser@<ip address> 
-
-- If your user cannot sudo things you might need to do this command as root.
-
-    chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
 
 - Good luck.
 
