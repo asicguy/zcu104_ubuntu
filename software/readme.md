@@ -1,7 +1,7 @@
 # Notes on Software compilation.
 These instructions attempt to compile everythng from primary sources. Xilinx calls this the OSL flow from here: https://github.com/hdlguy/zcu104_ubuntu.git
 
-Unfortunately, I have been unable to come up with a set of instructiions which result in booting linux with a root filesystem on non-volatile storage supporting full Ubuntu desktop linux.  Instead, I was able to follow the petalinux flow and boot into Ubuntu on the SD card.  See the instructions at ./petalinux/readme.md.
+Unfortunately, I have been unable to come up with a set of instructiions which result in booting linux with a root filesystem on non-volatile storage supporting full Ubuntu desktop linux.  Instead, I was able to follow the petalinux flow and boot into Ubuntu on the SD card.  Please see the instructions at ./petalinux/readme.md.
 ## Setup Compiler Toolchain
 - install Xilinx SDK 2018.2
 - source /opt/Xilinx/SDK/2018.2/settings64.sh
