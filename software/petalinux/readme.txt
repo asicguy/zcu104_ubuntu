@@ -76,13 +76,14 @@
 
     wget https://releases.linaro.org/debian/images/developer-arm64/latest/linaro-stretch-developer-20180416-89.tar.gz
 
-- Uncompress the root filesystem
+- Uncompress the root filesystem preserving file attributes and ownership.
 
-    tar -zxvf linaro-stretch-developer-20180416-89.tar.gz
+    sudo tar --preserve -zxvf linaro-stretch-developer-20180416-89.tar.gz
 
-- Copy the root filesystem onto the SD card.
+- Copy the root filesystem onto the SD card preserving file attributes and ownership.
 
-    sudo cp -r binary/* /media/pedro/rootfs/
+    sudo cp --recursive --preserve binary/* /media/pedro/rootfs/
+
 
 - Eject the SD card from your workstation and install it in the ZCU104.
 
