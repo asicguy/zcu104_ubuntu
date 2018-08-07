@@ -9,6 +9,6 @@ The goal of this project is to demonstrate Ubuntu running on MPSOC for the purpo
 
 ### Tasks:
 - **Create a simple FPGA Design** - See the readme under fpga for instructions.  There is a block ram and a register file that can be access from a program running under Ubuntu Linux.
-- **Boot Ubuntu Linux on the ZynqMP 64 bit Arm processor** - See the readme under software for instructions.
+- **Boot Ubuntu Linux on the ZynqMP 64 bit Arm processor** - See software/petalinux/readme.txt for instructions.
 - **Demonstrate basic access to FPGA features from Linux** - Look in software/app/bram_test.
 - **Demonstrate large-scale hardware verification** - We need suggestions on this.  I am thinking about doing some linear algebra, complex matrix inversion stuff in HLS.
