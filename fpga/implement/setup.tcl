@@ -8,6 +8,9 @@ set_property target_language Verilog [current_project]
 set_property default_lib work [current_project]
 load_features ipintegrator
 
+set_property  ip_repo_paths ../../hls/cholesky_inverse/csynth/solution1/impl/ip/ [current_project]
+update_ip_catalog
+
 #read_ip ../source/capture_ram/capt_bram_core/capt_bram_core.xci
 #upgrade_ip -quiet  [get_ips *]
 #generate_target {all} [get_ips *]
