@@ -11,9 +11,9 @@ load_features ipintegrator
 set_property  ip_repo_paths ../../hls/cholesky_inverse/csynth/solution1/impl/ip/ [current_project]
 update_ip_catalog
 
-#read_ip ../source/capture_ram/capt_bram_core/capt_bram_core.xci
-#upgrade_ip -quiet  [get_ips *]
-#generate_target {all} [get_ips *]
+read_ip ../source/matinv/matinv.xci
+upgrade_ip -quiet  [get_ips *]
+generate_target {all} [get_ips *]
 
 # make the Zynq block diagram
 source ../source/system.tcl
