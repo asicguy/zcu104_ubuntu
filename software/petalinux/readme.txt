@@ -1,3 +1,7 @@
+These instructions provide an outline of the steps required to boot Ubuntu Linux on the Xilinx ZCU104 evaluation board. It is reported that these same instructions also succeed for the ZCU102 board with appropriate substitutions. 
+
+
+
 - Download and install Xilinx Petalinux 2018.2.
 
 - Set up your environment variables. Something like this depending on where you installed Petalinux.
