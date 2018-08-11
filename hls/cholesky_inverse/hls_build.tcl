@@ -8,7 +8,7 @@ add_files -tb ./cholesky_inverse_tb.cpp
 open_solution -reset "solution1"
 set_part {xczu7ev-ffvc1156-2-e} -tool vivado
 create_clock -period 35 -name default
-#source "./iir/solution1/directives.tcl"
+source "./csynth/solution1/directives.tcl"
 
 csim_design -compiler gcc
 csynth_design
