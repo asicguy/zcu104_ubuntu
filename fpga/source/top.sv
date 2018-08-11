@@ -105,20 +105,21 @@ module top (
         .axi_aclk           (axi_aclk),
         .axi_aresetn        (axi_aresetn),
         //
-        .matinv_bram0_addr(matinv_bram0_addr),
-        .matinv_bram0_clk(matinv_bram0_clk),
-        .matinv_bram0_din(matinv_bram0_din),
-        .matinv_bram0_dout(matinv_bram0_dout),
-        .matinv_bram0_en(matinv_bram0_en),
-        .matinv_bram0_rst(matinv_bram0_rst),
-        .matinv_bram0_we(matinv_bram0_we),
-        .matinv_bram1_addr(matinv_bram1_addr),
-        .matinv_bram1_clk(matinv_bram1_clk),
-        .matinv_bram1_din(matinv_bram1_din),
-        .matinv_bram1_dout(matinv_bram1_dout),
-        .matinv_bram1_en(matinv_bram1_en),
-        .matinv_bram1_rst(matinv_bram1_rst),
-        .matinv_bram1_we(matinv_bram1_we)        
+        .matinv_bram0_addr  (matinv_bram0_addr),
+        .matinv_bram0_clk   (matinv_bram0_clk),
+        .matinv_bram0_din   (matinv_bram0_din),
+        .matinv_bram0_dout  (matinv_bram0_dout),
+        .matinv_bram0_en    (matinv_bram0_en),
+        .matinv_bram0_rst   (matinv_bram0_rst),
+        .matinv_bram0_we    (matinv_bram0_we),
+        //
+        .matinv_bram1_addr  (matinv_bram1_addr),
+        .matinv_bram1_clk   (matinv_bram1_clk),
+        .matinv_bram1_din   (matinv_bram1_din),
+        .matinv_bram1_dout  (matinv_bram1_dout),
+        .matinv_bram1_en    (matinv_bram1_en),
+        .matinv_bram1_rst   (matinv_bram1_rst),
+        .matinv_bram1_we    (matinv_bram1_we)        
     );
     
     logic [27:0] led_count;
@@ -146,48 +147,48 @@ module top (
 		.S_AXI_ACLK    (axi_aclk),
 		.S_AXI_ARESETN (axi_aresetn),
         //
-		.S_AXI_ARADDR  (M01_AXI_araddr ),
-		.S_AXI_ARPROT  (M01_AXI_arprot ),
-		.S_AXI_ARREADY (M01_AXI_arready),
-		.S_AXI_ARVALID (M01_AXI_arvalid),
-		.S_AXI_AWADDR  (M01_AXI_awaddr ),
-		.S_AXI_AWPROT  (M01_AXI_awprot ),
-		.S_AXI_AWREADY (M01_AXI_awready),
-		.S_AXI_AWVALID (M01_AXI_awvalid),
-		.S_AXI_BREADY  (M01_AXI_bready ),
-		.S_AXI_BRESP   (M01_AXI_bresp  ),
-		.S_AXI_BVALID  (M01_AXI_bvalid ),
-		.S_AXI_RDATA   (M01_AXI_rdata  ),
-		.S_AXI_RREADY  (M01_AXI_rready ),
-		.S_AXI_RRESP   (M01_AXI_rresp  ),
-		.S_AXI_RVALID  (M01_AXI_rvalid ),
-		.S_AXI_WDATA   (M01_AXI_wdata  ),
-		.S_AXI_WREADY  (M01_AXI_wready ),
-		.S_AXI_WSTRB   (M01_AXI_wstrb  ),
-		.S_AXI_WVALID  (M01_AXI_wvalid )
+		.S_AXI_ARADDR  (M00_AXI_araddr ),
+		.S_AXI_ARPROT  (M00_AXI_arprot ),
+		.S_AXI_ARREADY (M00_AXI_arready),
+		.S_AXI_ARVALID (M00_AXI_arvalid),
+		.S_AXI_AWADDR  (M00_AXI_awaddr ),
+		.S_AXI_AWPROT  (M00_AXI_awprot ),
+		.S_AXI_AWREADY (M00_AXI_awready),
+		.S_AXI_AWVALID (M00_AXI_awvalid),
+		.S_AXI_BREADY  (M00_AXI_bready ),
+		.S_AXI_BRESP   (M00_AXI_bresp  ),
+		.S_AXI_BVALID  (M00_AXI_bvalid ),
+		.S_AXI_RDATA   (M00_AXI_rdata  ),
+		.S_AXI_RREADY  (M00_AXI_rready ),
+		.S_AXI_RRESP   (M00_AXI_rresp  ),
+		.S_AXI_RVALID  (M00_AXI_rvalid ),
+		.S_AXI_WDATA   (M00_AXI_wdata  ),
+		.S_AXI_WREADY  (M00_AXI_wready ),
+		.S_AXI_WSTRB   (M00_AXI_wstrb  ),
+		.S_AXI_WVALID  (M00_AXI_wvalid )
 	);
 
     logic [3:0] mat_addr, inv_addr;
     logic mat_ce, inv_ce, inv_we;
     logic [31:0] mat_data, inv_data;
     matinv matinv_i (
-        .s_axi_AXILiteS_AWADDR  (M00_AXI_araddr ),   // input wire [4 : 0] s_axi_AXILiteS_AWADDR
-        .s_axi_AXILiteS_AWVALID (M00_AXI_wvalid ),   // input wire s_axi_AXILiteS_AWVALID
-        .s_axi_AXILiteS_AWREADY (M00_AXI_awready),   // output wire s_axi_AXILiteS_AWREADY
-        .s_axi_AXILiteS_WDATA   (M00_AXI_wdata  ),   // input wire [31 : 0] s_axi_AXILiteS_WDATA
-        .s_axi_AXILiteS_WSTRB   (M00_AXI_wstrb  ),   // input wire [3 : 0] s_axi_AXILiteS_WSTRB
-        .s_axi_AXILiteS_WVALID  (M00_AXI_wvalid ),   // input wire s_axi_AXILiteS_WVALID
-        .s_axi_AXILiteS_WREADY  (M00_AXI_wready ),   // output wire s_axi_AXILiteS_WREADY
-        .s_axi_AXILiteS_BRESP   (M00_AXI_bresp  ),   // output wire [1 : 0] s_axi_AXILiteS_BRESP
-        .s_axi_AXILiteS_BVALID  (M00_AXI_bvalid ),   // output wire s_axi_AXILiteS_BVALID
-        .s_axi_AXILiteS_BREADY  (M00_AXI_bready ),   // input wire s_axi_AXILiteS_BREADY
-        .s_axi_AXILiteS_ARADDR  (M00_AXI_araddr ),   // input wire [4 : 0] s_axi_AXILiteS_ARADDR
-        .s_axi_AXILiteS_ARVALID (M00_AXI_arvalid),   // input wire s_axi_AXILiteS_ARVALID
-        .s_axi_AXILiteS_ARREADY (M00_AXI_arready),   // output wire s_axi_AXILiteS_ARREADY
-        .s_axi_AXILiteS_RDATA   (M00_AXI_rdata  ),   // output wire [31 : 0] s_axi_AXILiteS_RDATA
-        .s_axi_AXILiteS_RRESP   (M00_AXI_rresp  ),   // output wire [1 : 0] s_axi_AXILiteS_RRESP
-        .s_axi_AXILiteS_RVALID  (M00_AXI_rvalid ),   // output wire s_axi_AXILiteS_RVALID
-        .s_axi_AXILiteS_RREADY  (M00_AXI_rready ),   // input wire s_axi_AXILiteS_RREADY
+        .s_axi_AXILiteS_AWADDR  (M01_AXI_araddr ),   // input wire [4 : 0] s_axi_AXILiteS_AWADDR
+        .s_axi_AXILiteS_AWVALID (M01_AXI_wvalid ),   // input wire s_axi_AXILiteS_AWVALID
+        .s_axi_AXILiteS_AWREADY (M01_AXI_awready),   // output wire s_axi_AXILiteS_AWREADY
+        .s_axi_AXILiteS_WDATA   (M01_AXI_wdata  ),   // input wire [31 : 0] s_axi_AXILiteS_WDATA
+        .s_axi_AXILiteS_WSTRB   (M01_AXI_wstrb  ),   // input wire [3 : 0] s_axi_AXILiteS_WSTRB
+        .s_axi_AXILiteS_WVALID  (M01_AXI_wvalid ),   // input wire s_axi_AXILiteS_WVALID
+        .s_axi_AXILiteS_WREADY  (M01_AXI_wready ),   // output wire s_axi_AXILiteS_WREADY
+        .s_axi_AXILiteS_BRESP   (M01_AXI_bresp  ),   // output wire [1 : 0] s_axi_AXILiteS_BRESP
+        .s_axi_AXILiteS_BVALID  (M01_AXI_bvalid ),   // output wire s_axi_AXILiteS_BVALID
+        .s_axi_AXILiteS_BREADY  (M01_AXI_bready ),   // input wire s_axi_AXILiteS_BREADY
+        .s_axi_AXILiteS_ARADDR  (M01_AXI_araddr ),   // input wire [4 : 0] s_axi_AXILiteS_ARADDR
+        .s_axi_AXILiteS_ARVALID (M01_AXI_arvalid),   // input wire s_axi_AXILiteS_ARVALID
+        .s_axi_AXILiteS_ARREADY (M01_AXI_arready),   // output wire s_axi_AXILiteS_ARREADY
+        .s_axi_AXILiteS_RDATA   (M01_AXI_rdata  ),   // output wire [31 : 0] s_axi_AXILiteS_RDATA
+        .s_axi_AXILiteS_RRESP   (M01_AXI_rresp  ),   // output wire [1 : 0] s_axi_AXILiteS_RRESP
+        .s_axi_AXILiteS_RVALID  (M01_AXI_rvalid ),   // output wire s_axi_AXILiteS_RVALID
+        .s_axi_AXILiteS_RREADY  (M01_AXI_rready ),   // input wire s_axi_AXILiteS_RREADY
         //
         .ap_clk                 (axi_aclk),          // input wire ap_clk
         .ap_rst_n               (axi_aresetn),       // input wire ap_rst_n        
