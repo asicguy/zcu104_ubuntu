@@ -1,0 +1,46 @@
+INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado/2018.2/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'pedro' on host 'pedro-crucial-250' (Linux_x86_64 version 4.4.0-131-generic) on Tue Aug 07 19:14:05 MDT 2018
+INFO: [HLS 200-10] On os Ubuntu 16.04.5 LTS
+INFO: [HLS 200-10] In directory '/home/pedro/github/zcu104_ubuntu/hls'
+INFO: [HLS 200-10] Opening project '/home/pedro/github/zcu104_ubuntu/hls/test1'.
+INFO: [HLS 200-10] Adding design file 'test1/.settings/negate.hpp' to the project
+INFO: [HLS 200-10] Adding design file 'test1/.settings/negate.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file 'test1/.settings/negate_tb.cpp' to the project
+INFO: [HLS 200-10] Opening solution '/home/pedro/github/zcu104_ubuntu/hls/test1/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-10] Setting target device to 'xczu9eg-ffvb1156-2-i'
+INFO: [HLS 200-10] Analyzing design file 'test1/.settings/negate.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 365.832 ; gain = 0.133 ; free physical = 10997 ; free virtual = 29334
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 365.832 ; gain = 0.133 ; free physical = 10997 ; free virtual = 29334
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 365.895 ; gain = 0.195 ; free physical = 10991 ; free virtual = 29329
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 365.895 ; gain = 0.195 ; free physical = 10987 ; free virtual = 29326
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 493.699 ; gain = 128.000 ; free physical = 10966 ; free virtual = 29305
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 493.699 ; gain = 128.000 ; free physical = 10964 ; free virtual = 29303
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'negate' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'negate' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 9.88 seconds; current allocated memory: 73.130 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0 seconds; current allocated memory: 73.211 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'negate' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'negate/d_in_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on function 'negate' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'negate'.
+INFO: [HLS 200-111]  Elapsed time: 0.01 seconds; current allocated memory: 73.521 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 493.699 ; gain = 128.000 ; free physical = 10963 ; free virtual = 29303
+INFO: [SYSC 207-301] Generating SystemC RTL for negate.
+INFO: [VHDL 208-304] Generating VHDL RTL for negate.
+INFO: [VLOG 209-307] Generating Verilog RTL for negate.
+INFO: [HLS 200-112] Total elapsed time: 10.13 seconds; peak allocated memory: 73.521 MB.

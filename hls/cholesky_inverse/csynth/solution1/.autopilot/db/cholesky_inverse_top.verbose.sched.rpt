@@ -1,0 +1,255 @@
+
+
+================================================================
+== Vivado HLS Report for 'cholesky_inverse_top'
+================================================================
+* Date:           Wed Aug  8 19:07:39 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        csynth
+* Solution:       solution1
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  35.00|    30.588|        4.38|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |  234|  422|  234|  422|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-----------------------+-----+-----+----------+-----------+-----------+------+----------+
+        |                       |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |       Loop Name       | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-----------------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- a_row_loop           |   40|   40|        10|          -|          -|     4|    no    |
+        | + a_col_loop          |    8|    8|         2|          -|          -|     4|    no    |
+        |- inverse_a_row_loop   |   40|   40|        10|          -|          -|     4|    no    |
+        | + inverse_a_col_loop  |    8|    8|         2|          -|          -|     4|    no    |
+        +-----------------------+-----+-----+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 8
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	5  / (tmp)
+	3  / (!tmp)
+3 --> 
+	4  / (!tmp_2)
+	2  / (tmp_2)
+4 --> 
+	3  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / (!tmp_1)
+7 --> 
+	8  / (!tmp_5)
+	6  / (tmp_5)
+8 --> 
+	7  / true
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.65>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([16 x float]* %A) nounwind, !map !58"   --->   Operation 9 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([16 x float]* %InverseA) nounwind, !map !64"   --->   Operation 10 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32 0) nounwind, !map !68"   --->   Operation 11 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([21 x i8]* @cholesky_inverse_top_1) nounwind"   --->   Operation 12 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%a_i = alloca [16 x float], align 4" [./cholesky_inverse.cpp:37]   --->   Operation 13 'alloca' 'a_i' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 0.67> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 16> <RAM>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%InverseA_assign = alloca [16 x float], align 4"   --->   Operation 14 'alloca' 'InverseA_assign' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 0.67> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 16> <RAM>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32 0, [10 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [./cholesky_inverse.cpp:36]   --->   Operation 15 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.65ns)   --->   "br label %1" [./cholesky_inverse.cpp:42]   --->   Operation 16 'br' <Predicate = true> <Delay = 0.65>
+
+State 2 <SV = 1> <Delay = 0.67>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%r = phi i3 [ 0, %0 ], [ %r_1, %5 ]"   --->   Operation 17 'phi' 'r' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 18 [1/1] (0.58ns)   --->   "%tmp = icmp eq i3 %r, -4" [./cholesky_inverse.cpp:42]   --->   Operation 18 'icmp' 'tmp' <Predicate = true> <Delay = 0.58> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.58> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)"   --->   Operation 19 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (0.67ns)   --->   "%r_1 = add i3 %r, 1" [./cholesky_inverse.cpp:42]   --->   Operation 20 'add' 'r_1' <Predicate = true> <Delay = 0.67> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "br i1 %tmp, label %6, label %2" [./cholesky_inverse.cpp:42]   --->   Operation 21 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([11 x i8]* @p_str2) nounwind" [./cholesky_inverse.cpp:42]   --->   Operation 22 'specloopname' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 23 [1/1] (0.00ns)   --->   "%tmp_s = call i32 (...)* @_ssdm_op_SpecRegionBegin([11 x i8]* @p_str2) nounwind" [./cholesky_inverse.cpp:42]   --->   Operation 23 'specregionbegin' 'tmp_s' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%tmp_9 = call i5 @_ssdm_op_BitConcatenate.i5.i3.i2(i3 %r, i2 0)" [./cholesky_inverse.cpp:42]   --->   Operation 24 'bitconcatenate' 'tmp_9' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%tmp_16_cast = zext i5 %tmp_9 to i6" [./cholesky_inverse.cpp:43]   --->   Operation 25 'zext' 'tmp_16_cast' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.65ns)   --->   "br label %3" [./cholesky_inverse.cpp:43]   --->   Operation 26 'br' <Predicate = (!tmp)> <Delay = 0.65>
+ST_2 : Operation 27 [2/2] (0.00ns)   --->   "%inverse_OK = call fastcc i32 @cholesky_inverse_top.2([16 x float]* %a_i, [16 x float]* %InverseA_assign) nounwind" [/opt/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/linear_algebra/hls_cholesky_inverse.h:175->./cholesky_inverse.cpp:49]   --->   Operation 27 'call' 'inverse_OK' <Predicate = (tmp)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 1.46>
+ST_3 : Operation 28 [1/1] (0.00ns)   --->   "%c = phi i3 [ 0, %2 ], [ %c_1, %4 ]"   --->   Operation 28 'phi' 'c' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 29 [1/1] (0.58ns)   --->   "%tmp_2 = icmp eq i3 %c, -4" [./cholesky_inverse.cpp:43]   --->   Operation 29 'icmp' 'tmp_2' <Predicate = true> <Delay = 0.58> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.58> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 30 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)"   --->   Operation 30 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 31 [1/1] (0.67ns)   --->   "%c_1 = add i3 %c, 1" [./cholesky_inverse.cpp:43]   --->   Operation 31 'add' 'c_1' <Predicate = true> <Delay = 0.67> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 32 [1/1] (0.00ns)   --->   "br i1 %tmp_2, label %5, label %4" [./cholesky_inverse.cpp:43]   --->   Operation 32 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 33 [1/1] (0.00ns)   --->   "%tmp_4_cast = zext i3 %c to i6" [./cholesky_inverse.cpp:44]   --->   Operation 33 'zext' 'tmp_4_cast' <Predicate = (!tmp_2)> <Delay = 0.00>
+ST_3 : Operation 34 [1/1] (0.78ns)   --->   "%tmp_11 = add i6 %tmp_16_cast, %tmp_4_cast" [./cholesky_inverse.cpp:44]   --->   Operation 34 'add' 'tmp_11' <Predicate = (!tmp_2)> <Delay = 0.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 35 [1/1] (0.00ns)   --->   "%tmp_19_cast = zext i6 %tmp_11 to i64" [./cholesky_inverse.cpp:44]   --->   Operation 35 'zext' 'tmp_19_cast' <Predicate = (!tmp_2)> <Delay = 0.00>
+ST_3 : Operation 36 [1/1] (0.00ns)   --->   "%A_addr = getelementptr [16 x float]* %A, i64 0, i64 %tmp_19_cast" [./cholesky_inverse.cpp:44]   --->   Operation 36 'getelementptr' 'A_addr' <Predicate = (!tmp_2)> <Delay = 0.00>
+ST_3 : Operation 37 [2/2] (0.67ns)   --->   "%A_load = load float* %A_addr, align 4" [./cholesky_inverse.cpp:44]   --->   Operation 37 'load' 'A_load' <Predicate = (!tmp_2)> <Delay = 0.67> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 0.67> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 16> <RAM>
+ST_3 : Operation 38 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([11 x i8]* @p_str2, i32 %tmp_s) nounwind" [./cholesky_inverse.cpp:46]   --->   Operation 38 'specregionend' 'empty' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_3 : Operation 39 [1/1] (0.00ns)   --->   "br label %1" [./cholesky_inverse.cpp:42]   --->   Operation 39 'br' <Predicate = (tmp_2)> <Delay = 0.00>
+
+State 4 <SV = 3> <Delay = 1.35>
+ST_4 : Operation 40 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([11 x i8]* @p_str3) nounwind" [./cholesky_inverse.cpp:43]   --->   Operation 40 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 41 [1/1] (0.00ns)   --->   "%a_i_addr = getelementptr [16 x float]* %a_i, i64 0, i64 %tmp_19_cast" [./cholesky_inverse.cpp:44]   --->   Operation 41 'getelementptr' 'a_i_addr' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 42 [1/2] (0.67ns)   --->   "%A_load = load float* %A_addr, align 4" [./cholesky_inverse.cpp:44]   --->   Operation 42 'load' 'A_load' <Predicate = true> <Delay = 0.67> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 0.67> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 16> <RAM>
+ST_4 : Operation 43 [1/1] (0.67ns)   --->   "store float %A_load, float* %a_i_addr, align 4" [./cholesky_inverse.cpp:44]   --->   Operation 43 'store' <Predicate = true> <Delay = 0.67> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 0.67> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 16> <RAM>
+ST_4 : Operation 44 [1/1] (0.00ns)   --->   "br label %3" [./cholesky_inverse.cpp:43]   --->   Operation 44 'br' <Predicate = true> <Delay = 0.00>
+
+State 5 <SV = 2> <Delay = 0.65>
+ST_5 : Operation 45 [1/2] (0.00ns)   --->   "%inverse_OK = call fastcc i32 @cholesky_inverse_top.2([16 x float]* %a_i, [16 x float]* %InverseA_assign) nounwind" [/opt/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/linear_algebra/hls_cholesky_inverse.h:175->./cholesky_inverse.cpp:49]   --->   Operation 45 'call' 'inverse_OK' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_5 : Operation 46 [1/1] (0.65ns)   --->   "br label %7" [./cholesky_inverse.cpp:52]   --->   Operation 46 'br' <Predicate = true> <Delay = 0.65>
+
+State 6 <SV = 3> <Delay = 0.67>
+ST_6 : Operation 47 [1/1] (0.00ns)   --->   "%r1 = phi i3 [ 0, %6 ], [ %r_2, %11 ]"   --->   Operation 47 'phi' 'r1' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 48 [1/1] (0.58ns)   --->   "%tmp_1 = icmp eq i3 %r1, -4" [./cholesky_inverse.cpp:52]   --->   Operation 48 'icmp' 'tmp_1' <Predicate = true> <Delay = 0.58> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.58> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 49 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)"   --->   Operation 49 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 50 [1/1] (0.67ns)   --->   "%r_2 = add i3 %r1, 1" [./cholesky_inverse.cpp:52]   --->   Operation 50 'add' 'r_2' <Predicate = true> <Delay = 0.67> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 51 [1/1] (0.00ns)   --->   "br i1 %tmp_1, label %12, label %8" [./cholesky_inverse.cpp:52]   --->   Operation 51 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 52 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([19 x i8]* @p_str4) nounwind" [./cholesky_inverse.cpp:52]   --->   Operation 52 'specloopname' <Predicate = (!tmp_1)> <Delay = 0.00>
+ST_6 : Operation 53 [1/1] (0.00ns)   --->   "%tmp_3 = call i32 (...)* @_ssdm_op_SpecRegionBegin([19 x i8]* @p_str4) nounwind" [./cholesky_inverse.cpp:52]   --->   Operation 53 'specregionbegin' 'tmp_3' <Predicate = (!tmp_1)> <Delay = 0.00>
+ST_6 : Operation 54 [1/1] (0.00ns)   --->   "%tmp_10 = call i5 @_ssdm_op_BitConcatenate.i5.i3.i2(i3 %r1, i2 0)" [./cholesky_inverse.cpp:52]   --->   Operation 54 'bitconcatenate' 'tmp_10' <Predicate = (!tmp_1)> <Delay = 0.00>
+ST_6 : Operation 55 [1/1] (0.00ns)   --->   "%tmp_18_cast = zext i5 %tmp_10 to i6" [./cholesky_inverse.cpp:53]   --->   Operation 55 'zext' 'tmp_18_cast' <Predicate = (!tmp_1)> <Delay = 0.00>
+ST_6 : Operation 56 [1/1] (0.65ns)   --->   "br label %9" [./cholesky_inverse.cpp:53]   --->   Operation 56 'br' <Predicate = (!tmp_1)> <Delay = 0.65>
+ST_6 : Operation 57 [1/1] (0.00ns)   --->   "ret i32 %inverse_OK" [./cholesky_inverse.cpp:58]   --->   Operation 57 'ret' <Predicate = (tmp_1)> <Delay = 0.00>
+
+State 7 <SV = 4> <Delay = 1.46>
+ST_7 : Operation 58 [1/1] (0.00ns)   --->   "%c2 = phi i3 [ 0, %8 ], [ %c_2, %10 ]"   --->   Operation 58 'phi' 'c2' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 59 [1/1] (0.58ns)   --->   "%tmp_5 = icmp eq i3 %c2, -4" [./cholesky_inverse.cpp:53]   --->   Operation 59 'icmp' 'tmp_5' <Predicate = true> <Delay = 0.58> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.58> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 60 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)"   --->   Operation 60 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 61 [1/1] (0.67ns)   --->   "%c_2 = add i3 %c2, 1" [./cholesky_inverse.cpp:53]   --->   Operation 61 'add' 'c_2' <Predicate = true> <Delay = 0.67> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 62 [1/1] (0.00ns)   --->   "br i1 %tmp_5, label %11, label %10" [./cholesky_inverse.cpp:53]   --->   Operation 62 'br' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 63 [1/1] (0.00ns)   --->   "%tmp_6_cast = zext i3 %c2 to i6" [./cholesky_inverse.cpp:54]   --->   Operation 63 'zext' 'tmp_6_cast' <Predicate = (!tmp_5)> <Delay = 0.00>
+ST_7 : Operation 64 [1/1] (0.78ns)   --->   "%tmp_12 = add i6 %tmp_18_cast, %tmp_6_cast" [./cholesky_inverse.cpp:54]   --->   Operation 64 'add' 'tmp_12' <Predicate = (!tmp_5)> <Delay = 0.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 65 [1/1] (0.00ns)   --->   "%tmp_20_cast = zext i6 %tmp_12 to i64" [./cholesky_inverse.cpp:54]   --->   Operation 65 'zext' 'tmp_20_cast' <Predicate = (!tmp_5)> <Delay = 0.00>
+ST_7 : Operation 66 [1/1] (0.00ns)   --->   "%InverseA_assign_addr = getelementptr [16 x float]* %InverseA_assign, i64 0, i64 %tmp_20_cast" [./cholesky_inverse.cpp:54]   --->   Operation 66 'getelementptr' 'InverseA_assign_addr' <Predicate = (!tmp_5)> <Delay = 0.00>
+ST_7 : Operation 67 [2/2] (0.67ns)   --->   "%InverseA_assign_load = load float* %InverseA_assign_addr, align 4" [./cholesky_inverse.cpp:54]   --->   Operation 67 'load' 'InverseA_assign_load' <Predicate = (!tmp_5)> <Delay = 0.67> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 0.67> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 16> <RAM>
+ST_7 : Operation 68 [1/1] (0.00ns)   --->   "%empty_9 = call i32 (...)* @_ssdm_op_SpecRegionEnd([19 x i8]* @p_str4, i32 %tmp_3) nounwind" [./cholesky_inverse.cpp:56]   --->   Operation 68 'specregionend' 'empty_9' <Predicate = (tmp_5)> <Delay = 0.00>
+ST_7 : Operation 69 [1/1] (0.00ns)   --->   "br label %7" [./cholesky_inverse.cpp:52]   --->   Operation 69 'br' <Predicate = (tmp_5)> <Delay = 0.00>
+
+State 8 <SV = 5> <Delay = 1.35>
+ST_8 : Operation 70 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([19 x i8]* @p_str5) nounwind" [./cholesky_inverse.cpp:53]   --->   Operation 70 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 71 [1/1] (0.00ns)   --->   "%InverseA_addr = getelementptr [16 x float]* %InverseA, i64 0, i64 %tmp_20_cast" [./cholesky_inverse.cpp:54]   --->   Operation 71 'getelementptr' 'InverseA_addr' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 72 [1/2] (0.67ns)   --->   "%InverseA_assign_load = load float* %InverseA_assign_addr, align 4" [./cholesky_inverse.cpp:54]   --->   Operation 72 'load' 'InverseA_assign_load' <Predicate = true> <Delay = 0.67> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 0.67> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 16> <RAM>
+ST_8 : Operation 73 [1/1] (0.67ns)   --->   "store float %InverseA_assign_load, float* %InverseA_addr, align 4" [./cholesky_inverse.cpp:54]   --->   Operation 73 'store' <Predicate = true> <Delay = 0.67> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 0.67> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 16> <RAM>
+ST_8 : Operation 74 [1/1] (0.00ns)   --->   "br label %9" [./cholesky_inverse.cpp:53]   --->   Operation 74 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 35ns, clock uncertainty: 4.38ns.
+
+ <State 1>: 0.656ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('r') with incoming values : ('r', ./cholesky_inverse.cpp:42) [12]  (0.656 ns)
+
+ <State 2>: 0.673ns
+The critical path consists of the following:
+	'phi' operation ('r') with incoming values : ('r', ./cholesky_inverse.cpp:42) [12]  (0 ns)
+	'add' operation ('r', ./cholesky_inverse.cpp:42) [15]  (0.673 ns)
+
+ <State 3>: 1.47ns
+The critical path consists of the following:
+	'phi' operation ('c') with incoming values : ('c', ./cholesky_inverse.cpp:43) [24]  (0 ns)
+	'add' operation ('tmp_11', ./cholesky_inverse.cpp:44) [32]  (0.789 ns)
+	'getelementptr' operation ('A_addr', ./cholesky_inverse.cpp:44) [34]  (0 ns)
+	'load' operation ('A_load', ./cholesky_inverse.cpp:44) on array 'A' [36]  (0.677 ns)
+
+ <State 4>: 1.35ns
+The critical path consists of the following:
+	'load' operation ('A_load', ./cholesky_inverse.cpp:44) on array 'A' [36]  (0.677 ns)
+	'store' operation (./cholesky_inverse.cpp:44) of variable 'A_load', ./cholesky_inverse.cpp:44 on array 'a_i', ./cholesky_inverse.cpp:37 [37]  (0.677 ns)
+
+ <State 5>: 0.656ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('r') with incoming values : ('r', ./cholesky_inverse.cpp:52) [46]  (0.656 ns)
+
+ <State 6>: 0.673ns
+The critical path consists of the following:
+	'phi' operation ('r') with incoming values : ('r', ./cholesky_inverse.cpp:52) [46]  (0 ns)
+	'add' operation ('r', ./cholesky_inverse.cpp:52) [49]  (0.673 ns)
+
+ <State 7>: 1.47ns
+The critical path consists of the following:
+	'phi' operation ('c') with incoming values : ('c', ./cholesky_inverse.cpp:53) [58]  (0 ns)
+	'add' operation ('tmp_12', ./cholesky_inverse.cpp:54) [66]  (0.789 ns)
+	'getelementptr' operation ('InverseA_assign_addr', ./cholesky_inverse.cpp:54) [69]  (0 ns)
+	'load' operation ('InverseA_assign_load', ./cholesky_inverse.cpp:54) on array 'InverseA_assign' [70]  (0.677 ns)
+
+ <State 8>: 1.35ns
+The critical path consists of the following:
+	'load' operation ('InverseA_assign_load', ./cholesky_inverse.cpp:54) on array 'InverseA_assign' [70]  (0.677 ns)
+	'store' operation (./cholesky_inverse.cpp:54) of variable 'InverseA_assign_load', ./cholesky_inverse.cpp:54 on array 'InverseA' [71]  (0.677 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

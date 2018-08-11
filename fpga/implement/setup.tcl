@@ -12,6 +12,7 @@ set_property  ip_repo_paths ../../hls/cholesky_inverse/csynth/solution1/impl/ip/
 update_ip_catalog
 
 read_ip ../source/matinv/matinv.xci
+read_ip ../source/matinv_ram/matinv_ram.xci
 upgrade_ip -quiet  [get_ips *]
 generate_target {all} [get_ips *]
 
