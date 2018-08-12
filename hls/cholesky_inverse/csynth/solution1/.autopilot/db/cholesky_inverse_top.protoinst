@@ -1,9 +1,0 @@
-{
-	"version": "1.0",
-	"modules": {
-		"cholesky_inverse_top": {
-			"proto_instances": {
-			}
-		}
-	}
-}
