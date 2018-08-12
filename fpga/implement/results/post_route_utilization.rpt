@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date         : Sat Aug 11 13:04:06 2018
-| Host         : pedro-crucial-250 running 64-bit Ubuntu 16.04.5 LTS
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Sun Aug 12 08:21:32 2018
+| Host         : pedro-mini-itx running 64-bit major release  (build 9200)
 | Command      : report_utilization -file ./results/post_route_utilization.rpt
 | Design       : top
 | Device       : xczu7evffvc1156-2
@@ -76,8 +76,8 @@ Table of Contents
 |   CLBL                                    |  1242 |     0 |           |       |
 |   CLBM                                    |  1296 |     0 |           |       |
 | LUT as Logic                              | 10727 |     0 |    230400 |  4.66 |
-|   using O5 output only                    |   338 |       |           |       |
-|   using O6 output only                    |  7639 |       |           |       |
+|   using O5 output only                    |   337 |       |           |       |
+|   using O6 output only                    |  7640 |       |           |       |
 |   using O5 and O6                         |  2750 |       |           |       |
 | LUT as Memory                             |  1810 |     0 |    101760 |  1.78 |
 |   LUT as Distributed RAM                  |   860 |     0 |           |       |
