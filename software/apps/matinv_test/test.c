@@ -31,29 +31,40 @@ int main(int argc,char** argv)
 
     write_reg(pcie_addr, LED_CONTROL, 0x02);
 
-    uint32_t write_data[TEST_BRAM_SIZE/4], read_data[TEST_BRAM_SIZE/4];
+    const int Nmat = 4;
+    float write_data[Nmat][Nmat], read_data[Nmat][Nmat];
 
-    // create test data.
-    //srand(1);
-    for (int i=0; i<TEST_BRAM_SIZE/4; i++) write_data[i] = rand();
-
-    uint32_t* bram_ptr = pcie_addr + TEST_BRAM_OFFSET;
-    fprintf(stdout, "bram_ptr = %p\n", bram_ptr);
-
-    // write bram
-    for (int i=0; i<TEST_BRAM_SIZE/4; i++) bram_ptr[i] = write_data[i];
-    //for (int i=0; i<TEST_BRAM_SIZE/4; i++) write_reg(pcie_addr, TEST_BRAM_OFFSET+0x4*i, write_data[i]);
-
-    // read bram
-    for (int i=0; i<TEST_BRAM_SIZE/4; i++) read_data[i] = bram_ptr[i];
-    //for (int i=0; i<TEST_BRAM_SIZE/4; i++) read_data[i] = read_reg(pcie_addr, TEST_BRAM_OFFSET+0x4*i);
-
-    // chech bram results
-    int errors = 0;
-    for (int i=0; i<TEST_BRAM_SIZE/4; i++) {
-        if (read_data[i] != write_data[i]) errors++;
+    for (int row=0; row<Nmat; row++){
+	for (int col=0; col<Nmat; col++){
+            //write_data[row][col] = (float)(rand());
+            write_data[row][col] = (float)(row+col*4);
+        }
     }
-    fprintf(stdout, "errors = %d\n", errors);
+
+    float* ibram = pcie_addr + MATINV_IBRAM;
+    float* obram = pcie_addr + MATINV_OBRAM;
+
+    fprintf(stdout, "loading input bram\n");
+    for (int row=0; row<Nmat; row++){
+	for (int col=0; col<Nmat; col++){
+            ibram[row+col*Nmat] = write_data[row][col];
+            obram[row+col*Nmat] = write_data[row][col]; // temporary
+	}
+    }
+
+    fprintf(stdout, "reading output bram\n");
+    for (int row=0; row<Nmat; row++){
+	for (int col=0; col<Nmat; col++){
+            read_data[row][col] = obram[row+col*Nmat] ;
+	}
+    }
+
+    for (int row=0; row<Nmat; row++){
+	for (int col=0; col<Nmat; col++){
+            fprintf(stdout, "%f, ", read_data[row][col] );
+	}
+        fprintf(stdout, "\n");
+    }
 
     munmap(pcie_addr,pcie_bar0_size);
 
