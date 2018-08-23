@@ -52,6 +52,14 @@ int main(int argc,char** argv)
 	}
     }
 
+    // uint32_t* mctrl = pcie_addr + MATINV_CONTROL;
+    // uint32_t readval;
+    // readval = mctrl[0];
+    // fprintf(stdout, "control reg = 0x%08x\n", readval);
+    // mctrl[0] = 0x00;
+    // fprintf(stdout, "control reg = 0x%08x\n", readval);
+
+
     fprintf(stdout, "reading output bram\n");
     for (int row=0; row<Nmat; row++){
 	for (int col=0; col<Nmat; col++){
