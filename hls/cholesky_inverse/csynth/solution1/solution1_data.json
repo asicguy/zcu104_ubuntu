@@ -20,7 +20,7 @@
     "ClockPeriod": "35",
     "IsCombLogic": "0",
     "II": "x",
-    "Latency": "234",
+    "Latency": "233",
     "Uncertainty": "4.375"
   },
   "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 35.000 [get_ports ap_clk]"]},
@@ -39,8 +39,8 @@
     "Vhdl": [
       "impl\/vhdl\/back_substitute_ahbi.vhd",
       "impl\/vhdl\/back_substitute_alt.vhd",
-      "impl\/vhdl\/cholesky_alt4.vhd",
-      "impl\/vhdl\/cholesky_alt4_L_ibkb.vhd",
+      "impl\/vhdl\/cholesky_alt.vhd",
+      "impl\/vhdl\/cholesky_alt_L_inbkb.vhd",
       "impl\/vhdl\/cholesky_inverse_cud.vhd",
       "impl\/vhdl\/cholesky_inverse_dEe.vhd",
       "impl\/vhdl\/cholesky_inverse_eOg.vhd",
@@ -51,17 +51,14 @@
       "impl\/vhdl\/cholesky_inverse_kbM.vhd",
       "impl\/vhdl\/cholesky_inverse_mb6.vhd",
       "impl\/vhdl\/cholesky_inverse_ncg.vhd",
-      "impl\/vhdl\/cholesky_inverse_ocq.vhd",
-      "impl\/vhdl\/cholesky_inverse_top_2.vhd",
-      "impl\/vhdl\/cholesky_inverse_top_AXILiteS_s_axi.vhd",
       "impl\/vhdl\/matrix_multiply_alt2.vhd",
       "impl\/vhdl\/cholesky_inverse_top.vhd"
     ],
     "Verilog": [
       "impl\/verilog\/back_substitute_ahbi.v",
       "impl\/verilog\/back_substitute_alt.v",
-      "impl\/verilog\/cholesky_alt4.v",
-      "impl\/verilog\/cholesky_alt4_L_ibkb.v",
+      "impl\/verilog\/cholesky_alt.v",
+      "impl\/verilog\/cholesky_alt_L_inbkb.v",
       "impl\/verilog\/cholesky_inverse_cud.v",
       "impl\/verilog\/cholesky_inverse_dEe.v",
       "impl\/verilog\/cholesky_inverse_eOg.v",
@@ -72,21 +69,8 @@
       "impl\/verilog\/cholesky_inverse_kbM.v",
       "impl\/verilog\/cholesky_inverse_mb6.v",
       "impl\/verilog\/cholesky_inverse_ncg.v",
-      "impl\/verilog\/cholesky_inverse_ocq.v",
-      "impl\/verilog\/cholesky_inverse_top_2.v",
-      "impl\/verilog\/cholesky_inverse_top_AXILiteS_s_axi.v",
       "impl\/verilog\/matrix_multiply_alt2.v",
       "impl\/verilog\/cholesky_inverse_top.v"
-    ],
-    "SwDriver": [
-      "impl\/misc\/drivers\/cholesky_inverse_top_v1_0\/data\/cholesky_inverse_top.mdd",
-      "impl\/misc\/drivers\/cholesky_inverse_top_v1_0\/data\/cholesky_inverse_top.tcl",
-      "impl\/misc\/drivers\/cholesky_inverse_top_v1_0\/src\/Makefile",
-      "impl\/misc\/drivers\/cholesky_inverse_top_v1_0\/src\/xcholesky_inverse_top.c",
-      "impl\/misc\/drivers\/cholesky_inverse_top_v1_0\/src\/xcholesky_inverse_top.h",
-      "impl\/misc\/drivers\/cholesky_inverse_top_v1_0\/src\/xcholesky_inverse_top_hw.h",
-      "impl\/misc\/drivers\/cholesky_inverse_top_v1_0\/src\/xcholesky_inverse_top_linux.c",
-      "impl\/misc\/drivers\/cholesky_inverse_top_v1_0\/src\/xcholesky_inverse_top_sinit.c"
     ],
     "Misc": ["impl\/misc\/logo.png"],
     "Subcore": [
@@ -180,330 +164,61 @@
     "ap_clk": {
       "type": "clock",
       "ctype": {"CLK": {"Type": "bool"}},
-      "buses": "s_axi_AXILiteS",
-      "reset": "ap_rst_n"
+      "reset": "ap_rst"
     },
-    "ap_rst_n": {
-      "type": "reset",
-      "polarity": "ACTIVE_LOW",
-      "ctype": {"RST": {"Type": "bool"}}
-    },
-    "interrupt": {
-      "type": "interrupt",
-      "ctype": {"INTERRUPT": {"Type": "bool"}}
-    },
-    "s_axi_AXILiteS": {
-      "type": "axi4lite",
-      "is_adaptor": "true",
-      "mode": "slave",
-      "port_prefix": "s_axi_AXILiteS",
-      "param_prefix": "C_S_AXI_AXILITES",
-      "addr_bits": "5",
-      "registers": [
-        {
-          "offset": "0x00",
-          "name": "CTRL",
-          "access": "RW",
-          "reset_value": "0x0",
-          "description": "Control signals",
-          "fields": [
-            {
-              "offset": "0",
-              "width": "1",
-              "name": "AP_START",
-              "access": "RW",
-              "reset_value": "0",
-              "description": "Control signal Register for 'ap_start'."
-            },
-            {
-              "offset": "1",
-              "width": "1",
-              "name": "AP_DONE",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Control signal Register for 'ap_done'."
-            },
-            {
-              "offset": "2",
-              "width": "1",
-              "name": "AP_IDLE",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Control signal Register for 'ap_idle'."
-            },
-            {
-              "offset": "3",
-              "width": "1",
-              "name": "AP_READY",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Control signal Register for 'ap_ready'."
-            },
-            {
-              "offset": "4",
-              "width": "3",
-              "name": "RESERVED_1",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            },
-            {
-              "offset": "7",
-              "width": "1",
-              "name": "AUTO_RESTART",
-              "access": "RW",
-              "reset_value": "0",
-              "description": "Control signal Register for 'auto_restart'."
-            },
-            {
-              "offset": "8",
-              "width": "24",
-              "name": "RESERVED_2",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            }
-          ]
-        },
-        {
-          "offset": "0x04",
-          "name": "GIER",
-          "access": "RW",
-          "reset_value": "0x0",
-          "description": "Global Interrupt Enable Register",
-          "fields": [
-            {
-              "offset": "0",
-              "width": "1",
-              "name": "Enable",
-              "access": "RW",
-              "reset_value": "0",
-              "description": "Master enable for the device interrupt output to the system interrupt controller: 0 = Disabled, 1 = Enabled"
-            },
-            {
-              "offset": "1",
-              "width": "31",
-              "name": "RESERVED",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            }
-          ]
-        },
-        {
-          "offset": "0x08",
-          "name": "IP_IER",
-          "access": "RW",
-          "reset_value": "0x0",
-          "description": "IP Interrupt Enable Register",
-          "fields": [
-            {
-              "offset": "0",
-              "width": "1",
-              "name": "CHAN0_INT_EN",
-              "access": "RW",
-              "reset_value": "0",
-              "description": "Enable Channel 0 (ap_done) Interrupt.  0 = Disabled, 1 = Enabled."
-            },
-            {
-              "offset": "1",
-              "width": "1",
-              "name": "CHAN1_INT_EN",
-              "access": "RW",
-              "reset_value": "0",
-              "description": "Enable Channel 1 (ap_ready) Interrupt.  0 = Disabled, 1 = Enabled."
-            },
-            {
-              "offset": "2",
-              "width": "30",
-              "name": "RESERVED",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            }
-          ]
-        },
-        {
-          "offset": "0x0c",
-          "name": "IP_ISR",
-          "access": "RW",
-          "reset_value": "0x0",
-          "description": "IP Interrupt Status Register",
-          "fields": [
-            {
-              "offset": "0",
-              "width": "1",
-              "name": "CHAN0_INT_ST",
-              "access": "RTOW",
-              "reset_value": "0",
-              "description": "Channel 0 (ap_done) Interrupt Status. 0 = No Channel 0 input interrupt, 1 = Channel 0 input interrup"
-            },
-            {
-              "offset": "1",
-              "width": "1",
-              "name": "CHAN1_INT_ST",
-              "access": "RTOW",
-              "reset_value": "0",
-              "description": "Channel 1 (ap_ready) Interrupt Status. 0 = No Channel 1 input interrupt, 1 = Channel 1 input interrup"
-            },
-            {
-              "offset": "2",
-              "width": "30",
-              "name": "RESERVED",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            }
-          ]
-        },
-        {
-          "offset": "0x10",
-          "name": "ap_return",
-          "access": "R",
-          "reset_value": "0x0",
-          "description": "Data signal of ap_return",
-          "fields": [{
-              "offset": "0",
-              "width": "32",
-              "name": "ap_return",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Bit 31 to 0 Data signal of ap_return"
-            }]
-        }
-      ],
-      "memories": "",
+    "ap_ctrl": {
+      "type": "ap_ctrl",
+      "ctrl_ports": "ap_start ap_done ap_idle ap_ready",
       "ctype": {
-        "AWVALID": {"Type": "bool"},
-        "AWREADY": {"Type": "bool"},
-        "WVALID": {"Type": "bool"},
-        "WREADY": {"Type": "bool"},
-        "BVALID": {"Type": "bool"},
-        "BREADY": {"Type": "bool"},
-        "BRESP": {
-          "Type": "integer unsigned",
-          "Width": "2"
-        },
-        "ARVALID": {"Type": "bool"},
-        "ARREADY": {"Type": "bool"},
-        "RVALID": {"Type": "bool"},
-        "RREADY": {"Type": "bool"},
-        "RRESP": {
-          "Type": "integer unsigned",
-          "Width": "2"
-        },
-        "AWADDR": {
-          "Type": "integer unsigned",
-          "Width": "5"
-        },
-        "WDATA": {
-          "Type": "null",
-          "Width": "32"
-        },
-        "WSTRB": {
-          "Type": "integer unsigned",
-          "Width": "4"
-        },
-        "ARADDR": {
-          "Type": "integer unsigned",
-          "Width": "5"
-        },
-        "RDATA": {
-          "Type": "null",
-          "Width": "32"
-        }
-      },
-      "data_width": "32",
-      "port_width": {
-        "ARADDR": "5",
-        "AWADDR": "5",
-        "RDATA": "32",
-        "WDATA": "32",
-        "WSTRB": "4"
+        "start": {"Type": "bool"},
+        "done": {"Type": "bool"},
+        "idle": {"Type": "bool"},
+        "ready": {"Type": "bool"}
       }
+    },
+    "ap_return": {
+      "type": "data",
+      "dir": "out",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer signed",
+          "Width": "32"
+        }}
+    },
+    "ap_rst": {
+      "type": "reset",
+      "polarity": "ACTIVE_HIGH",
+      "ctype": {"RST": {"Type": "bool"}}
     }
   },
   "RtlPorts": {
-    "s_axi_AXILiteS_AWVALID": {
-      "dir": "in",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_AWREADY": {
-      "dir": "out",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_AWADDR": {
-      "dir": "in",
-      "width": "5"
-    },
-    "s_axi_AXILiteS_WVALID": {
-      "dir": "in",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_WREADY": {
-      "dir": "out",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_WDATA": {
-      "dir": "in",
-      "width": "32"
-    },
-    "s_axi_AXILiteS_WSTRB": {
-      "dir": "in",
-      "width": "4"
-    },
-    "s_axi_AXILiteS_ARVALID": {
-      "dir": "in",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_ARREADY": {
-      "dir": "out",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_ARADDR": {
-      "dir": "in",
-      "width": "5"
-    },
-    "s_axi_AXILiteS_RVALID": {
-      "dir": "out",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_RREADY": {
-      "dir": "in",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_RDATA": {
-      "dir": "out",
-      "width": "32"
-    },
-    "s_axi_AXILiteS_RRESP": {
-      "dir": "out",
-      "width": "2"
-    },
-    "s_axi_AXILiteS_BVALID": {
-      "dir": "out",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_BREADY": {
-      "dir": "in",
-      "width": "1"
-    },
-    "s_axi_AXILiteS_BRESP": {
-      "dir": "out",
-      "width": "2"
-    },
     "ap_clk": {
       "dir": "in",
       "width": "1"
     },
-    "ap_rst_n": {
+    "ap_rst": {
       "dir": "in",
       "width": "1"
     },
-    "interrupt": {
+    "ap_start": {
+      "dir": "in",
+      "width": "1"
+    },
+    "ap_done": {
       "dir": "out",
-      "width": "1",
-      "isVector": "true"
+      "width": "1"
+    },
+    "ap_idle": {
+      "dir": "out",
+      "width": "1"
+    },
+    "ap_ready": {
+      "dir": "out",
+      "width": "1"
+    },
+    "ap_return": {
+      "dir": "out",
+      "width": "32"
     },
     "A_address0": {
       "dir": "out",
@@ -536,15 +251,13 @@
   },
   "CPorts": {
     "ap_ctrl": {
-      "interfaceRef": "s_axi_AXILiteS",
-      "dir": "in",
-      "offset": "0"
+      "interfaceRef": "ap_ctrl",
+      "dir": "out"
     },
     "ap_return": {
-      "interfaceRef": "s_axi_AXILiteS",
-      "dir": "in",
-      "offset": "16",
-      "statusOffset": "20"
+      "interfaceRef": "ap_return",
+      "dir": "out",
+      "dataWidth": "32"
     },
     "A_q0": {
       "interfaceRef": "A_q0",
@@ -566,27 +279,23 @@
   "ModuleInfo": {
     "Hierarchy": {
       "ModuleName": "cholesky_inverse_top",
-      "Instances": [{
-          "ModuleName": "cholesky_inverse_top_2",
-          "InstanceName": "grp_cholesky_inverse_top_2_fu_156",
-          "Instances": [
-            {
-              "ModuleName": "cholesky_alt4",
-              "InstanceName": "grp_cholesky_alt4_fu_28"
-            },
-            {
-              "ModuleName": "back_substitute_alt",
-              "InstanceName": "grp_back_substitute_alt_fu_36"
-            },
-            {
-              "ModuleName": "matrix_multiply_alt2",
-              "InstanceName": "grp_matrix_multiply_alt2_fu_42"
-            }
-          ]
-        }]
+      "Instances": [
+        {
+          "ModuleName": "cholesky_alt",
+          "InstanceName": "grp_cholesky_alt_fu_162"
+        },
+        {
+          "ModuleName": "back_substitute_alt",
+          "InstanceName": "grp_back_substitute_alt_fu_168"
+        },
+        {
+          "ModuleName": "matrix_multiply_alt2",
+          "InstanceName": "grp_matrix_multiply_alt2_fu_174"
+        }
+      ]
     },
     "Metrics": {
-      "cholesky_alt4": {
+      "cholesky_alt": {
         "Latency": {
           "LatencyBest": "29",
           "LatencyAvg": "",
@@ -732,38 +441,14 @@
           "URAM": "0"
         }
       },
-      "cholesky_inverse_top_2": {
-        "Latency": {
-          "LatencyBest": "151",
-          "LatencyAvg": "",
-          "LatencyWorst": "339",
-          "PipelineIIMin": "151",
-          "PipelineIIMax": "339",
-          "PipelineII": "151 ~ 339",
-          "PipelineDepth": "",
-          "PipelineType": "none"
-        },
-        "Timing": {
-          "Target": "35.00",
-          "Uncertainty": "4.38",
-          "Estimate": "30.588"
-        },
-        "Area": {
-          "BRAM_18K": "2",
-          "DSP48E": "27",
-          "FF": "2728",
-          "LUT": "5036",
-          "URAM": "0"
-        }
-      },
       "cholesky_inverse_top": {
         "Latency": {
-          "LatencyBest": "234",
+          "LatencyBest": "233",
           "LatencyAvg": "",
-          "LatencyWorst": "422",
-          "PipelineIIMin": "235",
-          "PipelineIIMax": "423",
-          "PipelineII": "235 ~ 423",
+          "LatencyWorst": "421",
+          "PipelineIIMin": "234",
+          "PipelineIIMax": "422",
+          "PipelineII": "234 ~ 422",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -805,8 +490,8 @@
         "Area": {
           "BRAM_18K": "2",
           "DSP48E": "27",
-          "FF": "2974",
-          "LUT": "5415",
+          "FF": "2936",
+          "LUT": "5285",
           "URAM": "0"
         }
       }
@@ -819,7 +504,7 @@
   },
   "GenData": {
     "DataVersion": "0.1",
-    "Time": "2018-08-08 19:08:14 MDT",
+    "Time": "2018-08-22 18:30:44 MDT",
     "ToolName": "vivado_hls",
     "ToolVersion": "2018.2"
   }
