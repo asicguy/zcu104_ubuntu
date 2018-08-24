@@ -36,7 +36,6 @@ int main(int argc,char** argv)
 
     for (int row=0; row<Nmat; row++){
 	for (int col=0; col<Nmat; col++){
-            //write_data[row][col] = (float)(rand());
             write_data[row][col] = (float)(row+col*4);
         }
     }
@@ -48,17 +47,31 @@ int main(int argc,char** argv)
     for (int row=0; row<Nmat; row++){
 	for (int col=0; col<Nmat; col++){
             ibram[row+col*Nmat] = write_data[row][col];
-            obram[row+col*Nmat] = write_data[row][col]; // temporary
+            obram[row+col*Nmat] = 0.0;
 	}
     }
 
-    // uint32_t* mctrl = pcie_addr + MATINV_CONTROL;
-    // uint32_t readval;
-    // readval = mctrl[0];
-    // fprintf(stdout, "control reg = 0x%08x\n", readval);
-    // mctrl[0] = 0x00;
-    // fprintf(stdout, "control reg = 0x%08x\n", readval);
+    fprintf(stdout,"MATINV_CONTROL = 0x%08X\n",read_reg(pcie_addr, MATINV_CONTROL));
+    fprintf(stdout,"MATINV_STATUS  = 0x%08X\n",read_reg(pcie_addr, MATINV_STATUS ));
+    write_reg(pcie_addr, MATINV_CONTROL, 0x01);
+    fprintf(stdout,"MATINV_CONTROL = 0x%08X\n",read_reg(pcie_addr, MATINV_CONTROL));
+    fprintf(stdout,"MATINV_STATUS  = 0x%08X\n",read_reg(pcie_addr, MATINV_STATUS ));
+    write_reg(pcie_addr, MATINV_CONTROL, 0x00);
+    fprintf(stdout,"MATINV_CONTROL = 0x%08X\n",read_reg(pcie_addr, MATINV_CONTROL));
+    fprintf(stdout,"MATINV_STATUS  = 0x%08X\n",read_reg(pcie_addr, MATINV_STATUS ));
 
+    fprintf(stdout, "reading input bram\n");
+    for (int row=0; row<Nmat; row++){
+	for (int col=0; col<Nmat; col++){
+            read_data[row][col] = ibram[row+col*Nmat] ;
+	}
+    }
+    for (int row=0; row<Nmat; row++){
+	for (int col=0; col<Nmat; col++){
+            fprintf(stdout, "%f, ", read_data[row][col] );
+	}
+        fprintf(stdout, "\n");
+    }
 
     fprintf(stdout, "reading output bram\n");
     for (int row=0; row<Nmat; row++){
@@ -66,7 +79,6 @@ int main(int argc,char** argv)
             read_data[row][col] = obram[row+col*Nmat] ;
 	}
     }
-
     for (int row=0; row<Nmat; row++){
 	for (int col=0; col<Nmat; col++){
             fprintf(stdout, "%f, ", read_data[row][col] );
