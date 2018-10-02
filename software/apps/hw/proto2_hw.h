@@ -27,4 +27,6 @@
 #define         MATINV_OBRAM        0x00030000 // This is the output bram of the matrix inverter.
 
 
+#define         ULTRA_RAM           0x00080000 // 512KB Ultraram
+#define         ULTRA_RAM_SIZE      0x00080000
 
