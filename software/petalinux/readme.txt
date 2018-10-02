@@ -120,6 +120,22 @@ These instructions provide an outline of the steps required to boot Ubuntu Linux
 
     ssh myuser@<ip address> 
 
+- Configure the PL side of the Zynq with an FPGA design. This has changed with this newer Linux on Zynq+.
+
+    Modify your FPGA build script to produce a .bin file in addition to the normal .bit file. The FPGA example in this project has that command in compile.tcl.
+    
+    Go to your terminal on the Zynq+ Linux command line.
+
+    Do a "git pull" to get the latest .bin file from the FPGA side of the repo.
+
+    Copy .../fpga/implement/results/top.bit.bin to /lib/firmware. I think you need to do this as sudo.
+
+    Change to root with "sudo su".
+
+    echo top.bit.bin > /sys/class/fpga_manager/fpga0/firmware
+
+    This last command should make the "Done" LED go green indicating success.
+
 - Good luck.
 
     
