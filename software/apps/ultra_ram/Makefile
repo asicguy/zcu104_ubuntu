@@ -6,7 +6,7 @@ CFLAGS=-I. -I../include  -I../API -I../hw -Wall
 
 DEPS = Makefile ../hw/proto2_hw.h
 
-PUBLIC_LIBS = ../API/utils.o ../API/mem-io.o
+PUBLIC_LIBS = ../API/mem-io.o
 LIB_FILES =
 
 LIB_OBJS := $(subst .c,.o,$(LIB_FILES))

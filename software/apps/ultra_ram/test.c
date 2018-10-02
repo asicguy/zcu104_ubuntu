@@ -19,8 +19,7 @@ int main(int argc,char** argv)
     uint32_t pcie_bar0_size=PROTO_SIZE;
 
     pcie_addr=phy_addr_2_vir_addr(pcie_bar0_addr,pcie_bar0_size);
-    if(pcie_addr==NULL)
-    {
+    if(pcie_addr==NULL) {
        fprintf(stderr,"can't mmap phy_addr 0x%08x with size 0x%08x to viraddr. you must be in root.\n",pcie_bar0_addr,pcie_bar0_size);
        exit(-1);
     }
