@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------
 | Tool Version      : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date              : Thu Aug 23 07:38:25 2018
-| Host              : pedro-crucial-250 running 64-bit Ubuntu 16.04.5 LTS
+| Date              : Mon Oct  1 18:17:48 2018
+| Host              : pedro-crucial-250 running 64-bit Ubuntu 18.04.1 LTS
 | Command           : report_timing_summary -file ./results/post_route_timing_summary.rpt
 | Design            : top
 | Device            : xczu7ev-ffvc1156
@@ -127,7 +127,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-     -6.517    -1126.285                    360                41279        0.011        0.000                      0                41279        3.498        0.000                       0                 15079  
+     -6.314    -1200.870                    362                49640        0.012        0.000                      0                49640        3.498        0.000                       0                 17386  
 
 
 Timing constraints are not met.
@@ -150,7 +150,7 @@ clk_pl_0  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-clk_pl_0           -6.517    -1126.285                    360                41279        0.011        0.000                      0                41279        3.498        0.000                       0                 15079  
+clk_pl_0           -6.314    -1200.870                    362                49352        0.012        0.000                      0                49352        3.498        0.000                       0                 17386  
 
 
 ------------------------------------------------------------------------------------------------
@@ -167,8 +167,9 @@ From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS
 | -----------------------
 ------------------------------------------------------------------------------------------------
 
-Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
-----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+Path Group         From Clock         To Clock               WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------         ----------         --------               -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+**async_default**  clk_pl_0           clk_pl_0                 8.529        0.000                      0                  288        0.191        0.000                      0                  288  
 
 
 ------------------------------------------------------------------------------------------------
@@ -181,34 +182,34 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  clk_pl_0
   To Clock:  clk_pl_0
 
-Setup :          360  Failing Endpoints,  Worst Slack       -6.517ns,  Total Violation    -1126.285ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.011ns,  Total Violation        0.000ns
+Setup :          362  Failing Endpoints,  Worst Slack       -6.314ns,  Total Violation    -1200.870ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.012ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        3.498ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (VIOLATED) :        -6.517ns  (required time - arrival time)
-  Source:                 matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/din1_buf1_reg[22]/C
+Slack (VIOLATED) :        -6.314ns  (required time - arrival time)
+  Source:                 matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/din1_buf1_reg[23]/C
                             (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/RESULT_REG.NORMAL.mant_op_reg[22]/D
                             (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_pl_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_pl_0 rise@10.000ns - clk_pl_0 rise@0.000ns)
-  Data Path Delay:        16.544ns  (logic 8.456ns (51.112%)  route 8.088ns (48.888%))
-  Logic Levels:           85  (CARRY8=66 LUT1=3 LUT2=2 LUT3=10 LUT4=3 LUT5=1)
-  Clock Path Skew:        0.132ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    1.651ns = ( 11.651 - 10.000 ) 
-    Source Clock Delay      (SCD):    1.651ns
-    Clock Pessimism Removal (CPR):    0.132ns
+  Data Path Delay:        16.279ns  (logic 8.231ns (50.562%)  route 8.048ns (49.438%))
+  Logic Levels:           78  (CARRY8=63 LUT1=4 LUT2=1 LUT3=8 LUT4=1 LUT5=1)
+  Clock Path Skew:        0.070ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.961ns = ( 11.961 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.013ns
+    Clock Pessimism Removal (CPR):    0.122ns
   Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.250ns
     Phase Error              (PE):    0.000ns
-  Clock Net Delay (Source):      1.443ns (routing 0.179ns, distribution 1.264ns)
-  Clock Net Delay (Destination): 1.483ns (routing 0.159ns, distribution 1.324ns)
+  Clock Net Delay (Source):      1.805ns (routing 0.555ns, distribution 1.250ns)
+  Clock Net Delay (Destination): 1.793ns (routing 0.499ns, distribution 1.294ns)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -218,268 +219,247 @@ Slack (VIOLATED) :        -6.517ns  (required time - arrival time)
                          net (fo=1, routed)           0.180     0.180    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
     BUFG_PS_X0Y72        BUFG_PS (Prop_BUFG_PS_I_O)
                                                       0.028     0.208 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
-    X1Y3 (CLOCK_ROOT)    net (fo=15120, routed)       1.443     1.651    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/ap_clk
-    SLICE_X40Y267        FDRE                                         r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/din1_buf1_reg[22]/C
+    X1Y2 (CLOCK_ROOT)    net (fo=17427, routed)       1.805     2.013    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/ap_clk
+    SLICE_X47Y294        FDRE                                         r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/din1_buf1_reg[23]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X40Y267        FDRE (Prop_CFF_SLICEL_C_Q)
-                                                      0.079     1.730 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/din1_buf1_reg[22]/Q
-                         net (fo=18, routed)          0.049     1.779    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/s_axis_a_tdata[2]
-    SLICE_X40Y267        LUT2 (Prop_B6LUT_SLICEL_I1_O)
-                                                      0.090     1.869 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/CHAIN_GEN[1].C_MUX.CARRY_MUX_i_1__10/O
-                         net (fo=1, routed)           0.009     1.878    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/CHAIN_GEN[1].C_MUX.CARRY_MUX_i_1__10_n_3
-    SLICE_X40Y267        CARRY8 (Prop_CARRY8_SLICEL_S[1]_O[4])
-                                                      0.200     2.078 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
-                         net (fo=24, routed)          0.180     2.258    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/Q[2]
-    SLICE_X40Y268        LUT3 (Prop_D6LUT_SLICEL_I1_O)
-                                                      0.050     2.308 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1/O
-                         net (fo=1, routed)           0.009     2.317    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].ADDSUB/ADDSUB/din1_buf1_reg[23]_1[1]
-    SLICE_X40Y268        CARRY8 (Prop_CARRY8_SLICEL_S[3]_O[4])
-                                                      0.144     2.461 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
-                         net (fo=5, routed)           0.148     2.609    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].ADDSUB/ADDSUB/p_116_out[3]
-    SLICE_X39Y268        LUT4 (Prop_B6LUT_SLICEM_I3_O)
-                                                      0.149     2.758 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].ADDSUB/ADDSUB/CHAIN_GEN[1].C_MUX.CARRY_MUX_i_1__0/O
-                         net (fo=1, routed)           0.016     2.774    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].ADDSUB/ADDSUB/din1_buf1_reg[21][0]
-    SLICE_X39Y268        CARRY8 (Prop_CARRY8_SLICEM_S[1]_O[5])
-                                                      0.237     3.011 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[5]
-                         net (fo=6, routed)           0.194     3.205    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].ADDSUB/ADDSUB/p_111_out[4]
-    SLICE_X40Y269        LUT3 (Prop_D6LUT_SLICEL_I2_O)
-                                                      0.099     3.304 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__1/O
-                         net (fo=1, routed)           0.009     3.313    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].ADDSUB/ADDSUB/din1_buf1_reg[21]_1[1]
-    SLICE_X40Y269        CARRY8 (Prop_CARRY8_SLICEL_S[3]_O[6])
-                                                      0.168     3.481 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[6]
-                         net (fo=7, routed)           0.150     3.631    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].ADDSUB/ADDSUB/p_106_out[5]
-    SLICE_X39Y269        LUT4 (Prop_B6LUT_SLICEM_I3_O)
-                                                      0.125     3.756 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].ADDSUB/ADDSUB/CHAIN_GEN[1].C_MUX.CARRY_MUX_i_1__2/O
-                         net (fo=1, routed)           0.016     3.772    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/din1_buf1_reg[19]_0[0]
-    SLICE_X39Y269        CARRY8 (Prop_CARRY8_SLICEM_S[1]_CO[7])
-                                                      0.190     3.962 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.052     4.014    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X39Y270        CARRY8 (Prop_CARRY8_SLICEM_CI_O[0])
-                                                      0.056     4.070 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/CHAIN_GEN[8].Q_XOR.SUM_XOR_CARRY4_CARRY8/O[0]
-                         net (fo=21, routed)          0.156     4.226    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/Q[6]
-    SLICE_X39Y271        LUT3 (Prop_D6LUT_SLICEM_I1_O)
-                                                      0.122     4.348 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__3/O
-                         net (fo=1, routed)           0.025     4.373    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/din1_buf1_reg[23]_1[1]
-    SLICE_X39Y271        CARRY8 (Prop_CARRY8_SLICEM_S[3]_CO[7])
-                                                      0.163     4.536 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026     4.562    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X39Y272        CARRY8 (Prop_CARRY8_SLICEM_CI_O[0])
-                                                      0.056     4.618 f  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[0]
-                         net (fo=9, routed)           0.247     4.865    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/p_96_out[7]
-    SLICE_X38Y271        LUT1 (Prop_A6LUT_SLICEL_I0_O)
-                                                      0.050     4.915 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__5/O
-                         net (fo=1, routed)           0.009     4.924    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/din1_buf1_reg[23]_2
-    SLICE_X38Y271        CARRY8 (Prop_CARRY8_SLICEL_S[0]_CO[7])
-                                                      0.190     5.114 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026     5.140    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X38Y272        CARRY8 (Prop_CARRY8_SLICEL_CI_O[1])
-                                                      0.076     5.216 f  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[1]
-                         net (fo=10, routed)          0.250     5.466    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/p_91_out[8]
-    SLICE_X37Y270        LUT1 (Prop_A6LUT_SLICEM_I0_O)
-                                                      0.053     5.519 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__6/O
-                         net (fo=1, routed)           0.013     5.532    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/din1_buf1_reg[23]_2
-    SLICE_X37Y270        CARRY8 (Prop_CARRY8_SLICEM_S[0]_CO[7])
-                                                      0.192     5.724 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026     5.750    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X37Y271        CARRY8 (Prop_CARRY8_SLICEM_CI_O[2])
-                                                      0.067     5.817 f  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[2]
-                         net (fo=11, routed)          0.271     6.088    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/p_86_out[9]
-    SLICE_X38Y269        LUT1 (Prop_A6LUT_SLICEL_I0_O)
-                                                      0.050     6.138 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__7/O
-                         net (fo=1, routed)           0.009     6.147    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/din1_buf1_reg[23]_2
-    SLICE_X38Y269        CARRY8 (Prop_CARRY8_SLICEL_S[0]_CO[7])
-                                                      0.190     6.337 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.052     6.389    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X38Y270        CARRY8 (Prop_CARRY8_SLICEL_CI_O[4])
-                                                      0.086     6.475 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
-                         net (fo=17, routed)          0.279     6.754    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/Q[10]
-    SLICE_X37Y268        LUT3 (Prop_D6LUT_SLICEM_I1_O)
-                                                      0.088     6.842 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__7/O
-                         net (fo=1, routed)           0.025     6.867    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/A[1]
-    SLICE_X37Y268        CARRY8 (Prop_CARRY8_SLICEM_S[3]_CO[7])
-                                                      0.163     7.030 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026     7.056    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X37Y269        CARRY8 (Prop_CARRY8_SLICEM_CI_O[4])
-                                                      0.086     7.142 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
-                         net (fo=13, routed)          0.241     7.383    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/p_76_out[11]
-    SLICE_X36Y268        LUT4 (Prop_B6LUT_SLICEL_I3_O)
-                                                      0.051     7.434 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/CHAIN_GEN[1].C_MUX.CARRY_MUX_i_1__8/O
-                         net (fo=1, routed)           0.009     7.443    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/din1_buf1_reg[23]_7[0]
-    SLICE_X36Y268        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
-                                                      0.186     7.629 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026     7.655    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X36Y269        CARRY8 (Prop_CARRY8_SLICEL_CI_O[5])
-                                                      0.116     7.771 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[5]
-                         net (fo=14, routed)          0.178     7.949    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/p_71_out[12]
-    SLICE_X35Y269        LUT3 (Prop_F6LUT_SLICEM_I2_O)
-                                                      0.148     8.097 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/CHAIN_GEN[5].C_MUX.CARRY_MUX_i_1__7/O
-                         net (fo=1, routed)           0.022     8.119    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/din1_buf1_reg[23]_8[3]
-    SLICE_X35Y269        CARRY8 (Prop_CARRY8_SLICEM_S[5]_CO[7])
-                                                      0.159     8.278 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.052     8.330    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X35Y270        CARRY8 (Prop_CARRY8_SLICEM_CI_O[7])
-                                                      0.116     8.446 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[7]
-                         net (fo=14, routed)          0.227     8.673    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/Q[13]
-    SLICE_X36Y270        LUT3 (Prop_D6LUT_SLICEL_I1_O)
-                                                      0.036     8.709 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__10/O
-                         net (fo=1, routed)           0.009     8.718    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/din1_buf1_reg[23]_9[1]
-    SLICE_X36Y270        CARRY8 (Prop_CARRY8_SLICEL_S[3]_CO[7])
-                                                      0.154     8.872 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026     8.898    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X36Y271        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015     8.913 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026     8.939    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X36Y272        CARRY8 (Prop_CARRY8_SLICEL_CI_O[0])
-                                                      0.056     8.995 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/CHAIN_GEN[16].Q_XOR.SUM_XOR_CARRY4_CARRY8/O[0]
-                         net (fo=13, routed)          0.278     9.273    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/Q[14]
-    SLICE_X35Y271        LUT3 (Prop_D6LUT_SLICEM_I1_O)
-                                                      0.051     9.324 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__11/O
-                         net (fo=1, routed)           0.025     9.349    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/din1_buf1_reg[23]_10[1]
-    SLICE_X35Y271        CARRY8 (Prop_CARRY8_SLICEM_S[3]_CO[7])
-                                                      0.163     9.512 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026     9.538    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X35Y272        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
-                                                      0.015     9.553 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026     9.579    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X35Y273        CARRY8 (Prop_CARRY8_SLICEM_CI_O[0])
-                                                      0.056     9.635 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[0]
-                         net (fo=17, routed)          0.416    10.051    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/din1_buf1_reg[23]_11[0]
-    SLICE_X34Y270        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
-                                                      0.186    10.237 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    10.263    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X34Y271        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    10.278 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    10.304    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X34Y272        CARRY8 (Prop_CARRY8_SLICEL_CI_O[1])
-                                                      0.076    10.380 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[1]
-                         net (fo=18, routed)          0.342    10.722    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/din1_buf1_reg[23]_12[0]
-    SLICE_X33Y269        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
-                                                      0.186    10.908 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.052    10.960    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X33Y270        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    10.975 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    11.001    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X33Y271        CARRY8 (Prop_CARRY8_SLICEL_CI_O[2])
-                                                      0.067    11.068 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[2]
-                         net (fo=19, routed)          0.198    11.266    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/A[0]
-    SLICE_X32Y270        LUT3 (Prop_D6LUT_SLICEL_I2_O)
-                                                      0.122    11.388 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__14/O
-                         net (fo=1, routed)           0.009    11.397    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/din1_buf1_reg[23]_13[1]
-    SLICE_X32Y270        CARRY8 (Prop_CARRY8_SLICEL_S[3]_CO[7])
-                                                      0.154    11.551 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    11.577    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X32Y271        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    11.592 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    11.618    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X32Y272        CARRY8 (Prop_CARRY8_SLICEL_CI_O[3])
-                                                      0.082    11.700 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[3]
-                         net (fo=20, routed)          0.148    11.848    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/A[0]
-    SLICE_X32Y273        LUT3 (Prop_F6LUT_SLICEL_I2_O)
-                                                      0.123    11.971 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[5].C_MUX.CARRY_MUX_i_1__13/O
-                         net (fo=1, routed)           0.011    11.982    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/din1_buf1_reg[23]_14[3]
-    SLICE_X32Y273        CARRY8 (Prop_CARRY8_SLICEL_S[5]_CO[7])
-                                                      0.155    12.137 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    12.163    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X32Y274        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    12.178 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    12.204    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X32Y275        CARRY8 (Prop_CARRY8_SLICEL_CI_O[4])
-                                                      0.086    12.290 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
-                         net (fo=21, routed)          0.316    12.606    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/din1_buf1_reg[23]_15[0]
-    SLICE_X33Y272        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
-                                                      0.186    12.792 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    12.818    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X33Y273        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    12.833 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    12.859    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X33Y274        CARRY8 (Prop_CARRY8_SLICEL_CI_O[5])
-                                                      0.116    12.975 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[5]
-                         net (fo=22, routed)          0.169    13.144    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/A[0]
-    SLICE_X33Y276        LUT3 (Prop_F6LUT_SLICEL_I2_O)
-                                                      0.148    13.292 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[5].C_MUX.CARRY_MUX_i_1__15/O
-                         net (fo=1, routed)           0.011    13.303    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/din1_buf1_reg[23]_16[3]
-    SLICE_X33Y276        CARRY8 (Prop_CARRY8_SLICEL_S[5]_CO[7])
-                                                      0.155    13.458 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    13.484    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X33Y277        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    13.499 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    13.525    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X33Y278        CARRY8 (Prop_CARRY8_SLICEL_CI_O[6])
-                                                      0.103    13.628 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[6]
-                         net (fo=23, routed)          0.373    14.001    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/din1_buf1_reg[23]_17[0]
-    SLICE_X34Y275        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
-                                                      0.186    14.187 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    14.213    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X34Y276        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    14.228 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    14.254    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X34Y277        CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
-                                                      0.116    14.370 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[7]
-                         net (fo=24, routed)          0.320    14.690    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/din1_buf1_reg[23]_18[0]
-    SLICE_X35Y276        CARRY8 (Prop_CARRY8_SLICEM_S[1]_CO[7])
-                                                      0.190    14.880 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    14.906    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X35Y277        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
-                                                      0.015    14.921 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    14.947    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X35Y278        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
-                                                      0.015    14.962 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    14.988    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[23].C_MUX.CARRY_MUX_n_3
-    SLICE_X35Y279        CARRY8 (Prop_CARRY8_SLICEM_CI_O[0])
-                                                      0.056    15.044 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[24].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[0]
-                         net (fo=25, routed)          0.411    15.455    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/din1_buf1_reg[23]_19[0]
-    SLICE_X36Y274        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
-                                                      0.186    15.641 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    15.667    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X36Y275        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    15.682 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    15.708    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X36Y276        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    15.723 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    15.749    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[23].C_MUX.CARRY_MUX_n_3
-    SLICE_X36Y277        CARRY8 (Prop_CARRY8_SLICEL_CI_O[1])
-                                                      0.076    15.825 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[24].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[1]
-                         net (fo=26, routed)          0.413    16.238    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/A[0]
-    SLICE_X37Y275        CARRY8 (Prop_CARRY8_SLICEM_S[1]_CO[7])
-                                                      0.190    16.428 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    16.454    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X37Y276        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
-                                                      0.015    16.469 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    16.495    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X37Y277        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
-                                                      0.015    16.510 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    16.536    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[23].C_MUX.CARRY_MUX_n_3
-    SLICE_X37Y278        CARRY8 (Prop_CARRY8_SLICEM_CI_O[2])
-                                                      0.067    16.603 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[24].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[2]
-                         net (fo=27, routed)          0.405    17.008    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/din1_buf1_reg[23][25]
-    SLICE_X38Y274        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
-                                                      0.186    17.194 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    17.220    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
-    SLICE_X38Y275        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    17.235 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    17.261    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
-    SLICE_X38Y276        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    17.276 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    17.302    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[23].C_MUX.CARRY_MUX_n_3
-    SLICE_X38Y277        CARRY8 (Prop_CARRY8_SLICEL_CI_O[4])
-                                                      0.086    17.388 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[24].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
-                         net (fo=2, routed)           0.173    17.561    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/Q[0]
-    SLICE_X38Y279        LUT2 (Prop_A6LUT_SLICEL_I0_O)
-                                                      0.050    17.611 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1/O
-                         net (fo=1, routed)           0.009    17.620    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/RND_BIT_GEN/NORM_1_OR_0.STRUCT_REQ.SPECIAL.RND_CHAIN/a_ip
-    SLICE_X38Y279        CARRY8 (Prop_CARRY8_SLICEL_S[0]_CO[7])
-                                                      0.190    17.810 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/RND_BIT_GEN/NORM_1_OR_0.STRUCT_REQ.SPECIAL.RND_CHAIN/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    17.836    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND1/CHAIN_GEN[6].C_MUX.CARRY_MUX_n_3
-    SLICE_X38Y280        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
-                                                      0.015    17.851 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND1/CHAIN_GEN[7].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
-                         net (fo=1, routed)           0.026    17.877    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND2/CHAIN_GEN[2].C_MUX.CARRY_MUX_n_3
-    SLICE_X38Y281        CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
-                                                      0.116    17.993 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND2/CHAIN_GEN[3].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[7]
-                         net (fo=1, routed)           0.119    18.112    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND2/mant_op[22]
-    SLICE_X38Y282        LUT5 (Prop_A6LUT_SLICEL_I0_O)
-                                                      0.035    18.147 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND2/RESULT_REG.NORMAL.mant_op[22]_i_1/O
-                         net (fo=1, routed)           0.048    18.195    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/din1_buf1_reg[31]
-    SLICE_X38Y282        FDRE                                         r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/RESULT_REG.NORMAL.mant_op_reg[22]/D
+    SLICE_X47Y294        FDRE (Prop_CFF_SLICEM_C_Q)
+                                                      0.078     2.091 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/din1_buf1_reg[23]/Q
+                         net (fo=62, routed)          0.260     2.351    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/s_axis_a_tdata[3]
+    SLICE_X47Y294        CARRY8 (Prop_CARRY8_SLICEM_S[2]_O[4])
+                                                      0.167     2.518 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
+                         net (fo=24, routed)          0.205     2.723    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/Q[2]
+    SLICE_X48Y294        LUT3 (Prop_D6LUT_SLICEL_I1_O)
+                                                      0.099     2.822 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1/O
+                         net (fo=1, routed)           0.009     2.831    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].ADDSUB/ADDSUB/din1_buf1_reg[23]_1[1]
+    SLICE_X48Y294        CARRY8 (Prop_CARRY8_SLICEL_S[3]_O[4])
+                                                      0.144     2.975 f  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
+                         net (fo=5, routed)           0.186     3.161    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].ADDSUB/ADDSUB/p_116_out[3]
+    SLICE_X48Y293        LUT1 (Prop_A6LUT_SLICEL_I0_O)
+                                                      0.050     3.211 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__1/O
+                         net (fo=1, routed)           0.009     3.220    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].ADDSUB/ADDSUB/din1_buf1_reg[23]_1
+    SLICE_X48Y293        CARRY8 (Prop_CARRY8_SLICEL_S[0]_O[5])
+                                                      0.238     3.458 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[5]
+                         net (fo=6, routed)           0.142     3.600    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].ADDSUB/ADDSUB/p_111_out[4]
+    SLICE_X49Y293        LUT4 (Prop_B6LUT_SLICEM_I3_O)
+                                                      0.089     3.689 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].ADDSUB/ADDSUB/CHAIN_GEN[1].C_MUX.CARRY_MUX_i_1__1/O
+                         net (fo=1, routed)           0.016     3.705    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].ADDSUB/ADDSUB/din1_buf1_reg[21]_1[0]
+    SLICE_X49Y293        CARRY8 (Prop_CARRY8_SLICEM_S[1]_O[6])
+                                                      0.224     3.929 f  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[6]
+                         net (fo=7, routed)           0.135     4.064    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].ADDSUB/ADDSUB/p_106_out[5]
+    SLICE_X49Y294        LUT1 (Prop_A6LUT_SLICEM_I0_O)
+                                                      0.053     4.117 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__3/O
+                         net (fo=1, routed)           0.013     4.130    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/din1_buf1_reg[19]
+    SLICE_X49Y294        CARRY8 (Prop_CARRY8_SLICEM_S[0]_O[7])
+                                                      0.241     4.371 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[7]
+                         net (fo=8, routed)           0.203     4.574    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/p_101_out[6]
+    SLICE_X48Y295        LUT3 (Prop_F6LUT_SLICEL_I2_O)
+                                                      0.123     4.697 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ADDSUB/ADDSUB/CHAIN_GEN[5].C_MUX.CARRY_MUX_i_1__1/O
+                         net (fo=1, routed)           0.011     4.708    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/din1_buf1_reg[23]_1[3]
+    SLICE_X48Y295        CARRY8 (Prop_CARRY8_SLICEL_S[5]_CO[7])
+                                                      0.155     4.863 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     4.889    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X48Y296        CARRY8 (Prop_CARRY8_SLICEL_CI_O[0])
+                                                      0.056     4.945 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[0]
+                         net (fo=9, routed)           0.189     5.134    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/p_96_out[7]
+    SLICE_X47Y295        LUT3 (Prop_D6LUT_SLICEM_I2_O)
+                                                      0.122     5.256 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__4/O
+                         net (fo=1, routed)           0.025     5.281    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/din1_buf1_reg[23]_3[1]
+    SLICE_X47Y295        CARRY8 (Prop_CARRY8_SLICEM_S[3]_CO[7])
+                                                      0.163     5.444 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     5.470    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X47Y296        CARRY8 (Prop_CARRY8_SLICEM_CI_O[2])
+                                                      0.067     5.537 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[2]
+                         net (fo=19, routed)          0.144     5.681    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/Q[8]
+    SLICE_X47Y297        LUT3 (Prop_D6LUT_SLICEM_I1_O)
+                                                      0.122     5.803 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__5/O
+                         net (fo=1, routed)           0.025     5.828    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/din1_buf1_reg[23]_3[1]
+    SLICE_X47Y297        CARRY8 (Prop_CARRY8_SLICEM_S[3]_CO[7])
+                                                      0.163     5.991 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     6.017    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X47Y298        CARRY8 (Prop_CARRY8_SLICEM_CI_O[2])
+                                                      0.067     6.084 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[2]
+                         net (fo=11, routed)          0.216     6.300    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/p_86_out[9]
+    SLICE_X46Y296        LUT3 (Prop_D6LUT_SLICEM_I2_O)
+                                                      0.122     6.422 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__6/O
+                         net (fo=1, routed)           0.025     6.447    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/din1_buf1_reg[23]_3[1]
+    SLICE_X46Y296        CARRY8 (Prop_CARRY8_SLICEM_S[3]_CO[7])
+                                                      0.163     6.610 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     6.636    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X46Y297        CARRY8 (Prop_CARRY8_SLICEM_CI_O[4])
+                                                      0.086     6.722 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
+                         net (fo=17, routed)          0.248     6.970    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/Q[10]
+    SLICE_X45Y296        LUT3 (Prop_D6LUT_SLICEL_I1_O)
+                                                      0.089     7.059 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ADDSUB/ADDSUB/CHAIN_GEN[3].C_MUX.CARRY_MUX_i_1__7/O
+                         net (fo=1, routed)           0.009     7.068    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/A[1]
+    SLICE_X45Y296        CARRY8 (Prop_CARRY8_SLICEL_S[3]_CO[7])
+                                                      0.154     7.222 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     7.248    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X45Y297        CARRY8 (Prop_CARRY8_SLICEL_CI_O[4])
+                                                      0.086     7.334 f  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
+                         net (fo=13, routed)          0.236     7.570    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/p_76_out[11]
+    SLICE_X44Y296        LUT1 (Prop_A6LUT_SLICEL_I0_O)
+                                                      0.050     7.620 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__9/O
+                         net (fo=1, routed)           0.009     7.629    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/din1_buf1_reg[23]_6
+    SLICE_X44Y296        CARRY8 (Prop_CARRY8_SLICEL_S[0]_CO[7])
+                                                      0.190     7.819 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     7.845    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X44Y297        CARRY8 (Prop_CARRY8_SLICEL_CI_O[5])
+                                                      0.116     7.961 f  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[5]
+                         net (fo=14, routed)          0.202     8.163    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/p_71_out[12]
+    SLICE_X44Y294        LUT1 (Prop_A6LUT_SLICEL_I0_O)
+                                                      0.090     8.253 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__10/O
+                         net (fo=1, routed)           0.009     8.262    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/din1_buf1_reg[23]_7
+    SLICE_X44Y294        CARRY8 (Prop_CARRY8_SLICEL_S[0]_CO[7])
+                                                      0.190     8.452 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     8.478    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X44Y295        CARRY8 (Prop_CARRY8_SLICEL_CI_O[6])
+                                                      0.103     8.581 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[6]
+                         net (fo=15, routed)          0.291     8.872    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/din1_buf1_reg[23]_9[0]
+    SLICE_X45Y293        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
+                                                      0.186     9.058 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     9.084    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X45Y294        CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.116     9.200 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[7]
+                         net (fo=16, routed)          0.308     9.508    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/din1_buf1_reg[23]_10[0]
+    SLICE_X46Y293        CARRY8 (Prop_CARRY8_SLICEM_S[1]_CO[7])
+                                                      0.190     9.698 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     9.724    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X46Y294        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.015     9.739 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026     9.765    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X46Y295        CARRY8 (Prop_CARRY8_SLICEM_CI_O[0])
+                                                      0.056     9.821 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[0]
+                         net (fo=17, routed)          0.322    10.143    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/din1_buf1_reg[23]_11[0]
+    SLICE_X46Y298        CARRY8 (Prop_CARRY8_SLICEM_S[1]_CO[7])
+                                                      0.190    10.333 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    10.359    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X46Y299        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.015    10.374 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    10.400    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X46Y300        CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.076    10.476 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[1]
+                         net (fo=18, routed)          0.379    10.855    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/din1_buf1_reg[23]_12[0]
+    SLICE_X45Y306        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
+                                                      0.186    11.041 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    11.067    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X45Y307        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    11.082 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    11.108    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X45Y308        CARRY8 (Prop_CARRY8_SLICEL_CI_O[2])
+                                                      0.067    11.175 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[2]
+                         net (fo=19, routed)          0.371    11.546    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/din1_buf1_reg[23]_13[0]
+    SLICE_X46Y306        CARRY8 (Prop_CARRY8_SLICEM_S[1]_CO[7])
+                                                      0.190    11.736 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    11.762    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X46Y307        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.015    11.777 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    11.803    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X46Y308        CARRY8 (Prop_CARRY8_SLICEM_CI_O[3])
+                                                      0.082    11.885 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[3]
+                         net (fo=20, routed)          0.234    12.119    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/A[0]
+    SLICE_X46Y302        LUT3 (Prop_F6LUT_SLICEM_I2_O)
+                                                      0.123    12.242 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ADDSUB/ADDSUB/CHAIN_GEN[5].C_MUX.CARRY_MUX_i_1__13/O
+                         net (fo=1, routed)           0.022    12.264    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/din1_buf1_reg[23]_14[3]
+    SLICE_X46Y302        CARRY8 (Prop_CARRY8_SLICEM_S[5]_CO[7])
+                                                      0.159    12.423 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    12.449    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X46Y303        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.015    12.464 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    12.490    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X46Y304        CARRY8 (Prop_CARRY8_SLICEM_CI_O[4])
+                                                      0.086    12.576 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
+                         net (fo=21, routed)          0.393    12.969    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/din1_buf1_reg[23]_15[0]
+    SLICE_X45Y302        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
+                                                      0.186    13.155 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    13.181    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X45Y303        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    13.196 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    13.222    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X45Y304        CARRY8 (Prop_CARRY8_SLICEL_CI_O[5])
+                                                      0.116    13.338 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[5]
+                         net (fo=22, routed)          0.279    13.617    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/A[0]
+    SLICE_X45Y299        LUT3 (Prop_F6LUT_SLICEL_I2_O)
+                                                      0.089    13.706 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ADDSUB/ADDSUB/CHAIN_GEN[13].C_MUX.CARRY_MUX_i_1__7/O
+                         net (fo=1, routed)           0.011    13.717    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/din1_buf1_reg[23]_16[11]
+    SLICE_X45Y299        CARRY8 (Prop_CARRY8_SLICEL_S[5]_CO[7])
+                                                      0.155    13.872 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    13.898    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X45Y300        CARRY8 (Prop_CARRY8_SLICEL_CI_O[6])
+                                                      0.103    14.001 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[6]
+                         net (fo=23, routed)          0.302    14.303    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/din1_buf1_reg[23]_17[0]
+    SLICE_X44Y298        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
+                                                      0.186    14.489 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    14.515    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X44Y299        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    14.530 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    14.556    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X44Y300        CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.116    14.672 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[7]
+                         net (fo=24, routed)          0.306    14.978    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/din1_buf1_reg[23]_18[0]
+    SLICE_X43Y299        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
+                                                      0.186    15.164 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    15.190    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X43Y300        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    15.205 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    15.231    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X43Y301        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    15.246 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    15.272    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[23].C_MUX.CARRY_MUX_n_3
+    SLICE_X43Y302        CARRY8 (Prop_CARRY8_SLICEL_CI_O[0])
+                                                      0.056    15.328 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ADDSUB/ADDSUB/CHAIN_GEN[24].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[0]
+                         net (fo=25, routed)          0.306    15.634    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/din1_buf1_reg[23]_19[0]
+    SLICE_X42Y302        CARRY8 (Prop_CARRY8_SLICEM_S[1]_CO[7])
+                                                      0.190    15.824 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    15.850    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X42Y303        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.015    15.865 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    15.891    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X42Y304        CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.015    15.906 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    15.932    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[23].C_MUX.CARRY_MUX_n_3
+    SLICE_X42Y305        CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.076    16.008 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ADDSUB/ADDSUB/CHAIN_GEN[24].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[1]
+                         net (fo=26, routed)          0.324    16.332    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/A[0]
+    SLICE_X43Y304        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
+                                                      0.186    16.518 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    16.544    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X43Y305        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    16.559 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    16.585    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X43Y306        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    16.600 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    16.626    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[23].C_MUX.CARRY_MUX_n_3
+    SLICE_X43Y307        CARRY8 (Prop_CARRY8_SLICEL_CI_O[2])
+                                                      0.067    16.693 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ADDSUB/ADDSUB/CHAIN_GEN[24].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[2]
+                         net (fo=27, routed)          0.324    17.017    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/din1_buf1_reg[23][25]
+    SLICE_X44Y304        CARRY8 (Prop_CARRY8_SLICEL_S[1]_CO[7])
+                                                      0.186    17.203 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    17.229    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[7].C_MUX.CARRY_MUX_n_3
+    SLICE_X44Y305        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    17.244 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[8].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    17.270    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[15].C_MUX.CARRY_MUX_n_3
+    SLICE_X44Y306        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    17.285 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[16].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    17.311    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[23].C_MUX.CARRY_MUX_n_3
+    SLICE_X44Y307        CARRY8 (Prop_CARRY8_SLICEL_CI_O[4])
+                                                      0.086    17.397 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[24].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[4]
+                         net (fo=2, routed)           0.214    17.611    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/Q[0]
+    SLICE_X45Y310        LUT2 (Prop_A6LUT_SLICEL_I0_O)
+                                                      0.098    17.709 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ADDSUB/ADDSUB/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1/O
+                         net (fo=1, routed)           0.009    17.718    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/RND_BIT_GEN/NORM_1_OR_0.STRUCT_REQ.SPECIAL.RND_CHAIN/a_ip
+    SLICE_X45Y310        CARRY8 (Prop_CARRY8_SLICEL_S[0]_CO[7])
+                                                      0.190    17.908 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/RND_BIT_GEN/NORM_1_OR_0.STRUCT_REQ.SPECIAL.RND_CHAIN/CHAIN_GEN[0].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    17.934    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND1/CHAIN_GEN[6].C_MUX.CARRY_MUX_n_3
+    SLICE_X45Y311        CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.015    17.949 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND1/CHAIN_GEN[7].C_MUX.CARRY_MUX_CARRY4_CARRY8/CO[7]
+                         net (fo=1, routed)           0.026    17.975    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND2/CHAIN_GEN[2].C_MUX.CARRY_MUX_n_3
+    SLICE_X45Y312        CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.116    18.091 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND2/CHAIN_GEN[3].C_MUX.CARRY_MUX_CARRY4_CARRY8/O[7]
+                         net (fo=1, routed)           0.116    18.207    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND2/mant_op[22]
+    SLICE_X44Y312        LUT5 (Prop_D6LUT_SLICEL_I0_O)
+                                                      0.036    18.243 r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/LOGIC.RND2/RESULT_REG.NORMAL.mant_op[22]_i_1/O
+                         net (fo=1, routed)           0.049    18.292    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/din1_buf1_reg[31]
+    SLICE_X44Y312        FDRE                                         r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/RESULT_REG.NORMAL.mant_op_reg[22]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_pl_0 rise edge)
@@ -488,17 +468,17 @@ Slack (VIOLATED) :        -6.517ns  (required time - arrival time)
                          net (fo=1, routed)           0.143    10.143    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
     BUFG_PS_X0Y72        BUFG_PS (Prop_BUFG_PS_I_O)
                                                       0.025    10.168 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
-    X1Y3 (CLOCK_ROOT)    net (fo=15120, routed)       1.483    11.651    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/aclk
-    SLICE_X38Y282        FDRE                                         r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/RESULT_REG.NORMAL.mant_op_reg[22]/C
-                         clock pessimism              0.132    11.783    
-                         clock uncertainty           -0.130    11.653    
-    SLICE_X38Y282        FDRE (Setup_AFF_SLICEL_C_D)
-                                                      0.025    11.678    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/RESULT_REG.NORMAL.mant_op_reg[22]
+    X1Y2 (CLOCK_ROOT)    net (fo=17427, routed)       1.793    11.961    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/aclk
+    SLICE_X44Y312        FDRE                                         r  matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/RESULT_REG.NORMAL.mant_op_reg[22]/C
+                         clock pessimism              0.122    12.083    
+                         clock uncertainty           -0.130    11.953    
+    SLICE_X44Y312        FDRE (Setup_DFF_SLICEL_C_D)
+                                                      0.025    11.978    matinv_i/inst/grp_cholesky_alt_fu_162/cholesky_inverse_fYi_U5/cholesky_inverse_top_ap_fsqrt_1_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.OP/RESULT_REG.NORMAL.mant_op_reg[22]
   -------------------------------------------------------------------
-                         required time                         11.678    
-                         arrival time                         -18.195    
+                         required time                         11.978    
+                         arrival time                         -18.292    
   -------------------------------------------------------------------
-                         slack                                 -6.517    
+                         slack                                 -6.314    
 
 
 
@@ -506,22 +486,22 @@ Slack (VIOLATED) :        -6.517ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.011ns  (arrival time - required time)
-  Source:                 matinv_i/inst/grp_matrix_multiply_alt2_fu_174/C_addr_reg_434_reg[1]/C
+Slack (MET) :             0.012ns  (arrival time - required time)
+  Source:                 system_i/axi_bram_ctrl_1/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/GEN_RDATA_NO_ECC.GEN_RDATA[26].axi_rdata_int_reg[26]/C
                             (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            matinv_i/inst/grp_matrix_multiply_alt2_fu_174/sum_mult_U/back_substitute_ahbi_ram_U/ram_reg_0_15_6_11/RAMA/WADR1
-                            (rising edge-triggered cell RAMD32 clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_READ.read_data_inst/WORD_LANE[1].S_AXI_RDATA_II_reg[58]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_pl_0
   Path Type:              Hold (Min at Slow Process Corner)
   Requirement:            0.000ns  (clk_pl_0 rise@0.000ns - clk_pl_0 rise@0.000ns)
-  Data Path Delay:        0.235ns  (logic 0.060ns (25.532%)  route 0.175ns (74.468%))
+  Data Path Delay:        0.250ns  (logic 0.060ns (24.000%)  route 0.190ns (76.000%))
   Logic Levels:           0  
-  Clock Path Skew:        0.136ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.644ns
-    Source Clock Delay      (SCD):    1.382ns
-    Clock Pessimism Removal (CPR):    0.126ns
-  Clock Net Delay (Source):      1.214ns (routing 0.159ns, distribution 1.055ns)
-  Clock Net Delay (Destination): 1.436ns (routing 0.179ns, distribution 1.257ns)
+  Clock Path Skew:        0.176ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.082ns
+    Source Clock Delay      (SCD):    1.736ns
+    Clock Pessimism Removal (CPR):    0.170ns
+  Clock Net Delay (Source):      1.568ns (routing 0.499ns, distribution 1.069ns)
+  Clock Net Delay (Destination): 1.874ns (routing 0.555ns, distribution 1.319ns)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -531,13 +511,13 @@ Slack (MET) :             0.011ns  (arrival time - required time)
                          net (fo=1, routed)           0.143     0.143    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
     BUFG_PS_X0Y72        BUFG_PS (Prop_BUFG_PS_I_O)
                                                       0.025     0.168 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
-    X1Y3 (CLOCK_ROOT)    net (fo=15120, routed)       1.214     1.382    matinv_i/inst/grp_matrix_multiply_alt2_fu_174/ap_clk
-    SLICE_X45Y263        FDRE                                         r  matinv_i/inst/grp_matrix_multiply_alt2_fu_174/C_addr_reg_434_reg[1]/C
+    X1Y2 (CLOCK_ROOT)    net (fo=17427, routed)       1.568     1.736    system_i/axi_bram_ctrl_1/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/s_axi_aclk
+    SLICE_X42Y273        FDRE                                         r  system_i/axi_bram_ctrl_1/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/GEN_RDATA_NO_ECC.GEN_RDATA[26].axi_rdata_int_reg[26]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X45Y263        FDRE (Prop_EFF2_SLICEL_C_Q)
-                                                      0.060     1.442 r  matinv_i/inst/grp_matrix_multiply_alt2_fu_174/C_addr_reg_434_reg[1]/Q
-                         net (fo=49, routed)          0.175     1.617    matinv_i/inst/grp_matrix_multiply_alt2_fu_174/sum_mult_U/back_substitute_ahbi_ram_U/ram_reg_0_15_6_11/ADDRH1
-    SLICE_X46Y262        RAMD32                                       r  matinv_i/inst/grp_matrix_multiply_alt2_fu_174/sum_mult_U/back_substitute_ahbi_ram_U/ram_reg_0_15_6_11/RAMA/WADR1
+    SLICE_X42Y273        FDRE (Prop_BFF2_SLICEM_C_Q)
+                                                      0.060     1.796 r  system_i/axi_bram_ctrl_1/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/GEN_RDATA_NO_ECC.GEN_RDATA[26].axi_rdata_int_reg[26]/Q
+                         net (fo=4, routed)           0.190     1.986    system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_READ.read_data_inst/m_axi_rdata[26]
+    SLICE_X33Y273        FDRE                                         r  system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_READ.read_data_inst/WORD_LANE[1].S_AXI_RDATA_II_reg[58]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_pl_0 rise edge)
@@ -546,16 +526,16 @@ Slack (MET) :             0.011ns  (arrival time - required time)
                          net (fo=1, routed)           0.180     0.180    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
     BUFG_PS_X0Y72        BUFG_PS (Prop_BUFG_PS_I_O)
                                                       0.028     0.208 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
-    X1Y3 (CLOCK_ROOT)    net (fo=15120, routed)       1.436     1.644    matinv_i/inst/grp_matrix_multiply_alt2_fu_174/sum_mult_U/back_substitute_ahbi_ram_U/ram_reg_0_15_6_11/WCLK
-    SLICE_X46Y262        RAMD32                                       r  matinv_i/inst/grp_matrix_multiply_alt2_fu_174/sum_mult_U/back_substitute_ahbi_ram_U/ram_reg_0_15_6_11/RAMA/CLK
-                         clock pessimism             -0.126     1.518    
-    SLICE_X46Y262        RAMD32 (Hold_A5LUT_SLICEM_CLK_WADR1)
-                                                      0.088     1.606    matinv_i/inst/grp_matrix_multiply_alt2_fu_174/sum_mult_U/back_substitute_ahbi_ram_U/ram_reg_0_15_6_11/RAMA
+    X1Y2 (CLOCK_ROOT)    net (fo=17427, routed)       1.874     2.082    system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_READ.read_data_inst/CLK
+    SLICE_X33Y273        FDRE                                         r  system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_READ.read_data_inst/WORD_LANE[1].S_AXI_RDATA_II_reg[58]/C
+                         clock pessimism             -0.170     1.912    
+    SLICE_X33Y273        FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.062     1.974    system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_READ.read_data_inst/WORD_LANE[1].S_AXI_RDATA_II_reg[58]
   -------------------------------------------------------------------
-                         required time                         -1.606    
-                         arrival time                           1.617    
+                         required time                         -1.974    
+                         arrival time                           1.986    
   -------------------------------------------------------------------
-                         slack                                  0.011    
+                         slack                                  0.012    
 
 
 
@@ -572,6 +552,141 @@ Check Type        Corner  Lib Pin          Reference Pin  Required(ns)  Actual(n
 Min Period        n/a     PS8/MAXIGP0ACLK  n/a            3.003         10.000      6.997      PS8_X0Y0  system_i/zynq_ultra_ps_e_0/inst/PS8_i/MAXIGP0ACLK
 Low Pulse Width   Slow    PS8/MAXIGP0ACLK  n/a            1.502         5.000       3.498      PS8_X0Y0  system_i/zynq_ultra_ps_e_0/inst/PS8_i/MAXIGP0ACLK
 High Pulse Width  Slow    PS8/MAXIGP0ACLK  n/a            1.502         5.000       3.498      PS8_X0Y0  system_i/zynq_ultra_ps_e_0/inst/PS8_i/MAXIGP0ACLK
+
+
+
+---------------------------------------------------------------------------------------------------
+Path Group:  **async_default**
+From Clock:  clk_pl_0
+  To Clock:  clk_pl_0
+
+Setup :            0  Failing Endpoints,  Worst Slack        8.529ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.191ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             8.529ns  (required time - arrival time)
+  Source:                 system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst/arststages_ff_reg[1]/C
+                            (rising edge-triggered cell FDPE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.curr_fwft_state_reg[0]/CLR
+                            (recovery check against rising-edge clock clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_pl_0 rise@10.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        1.127ns  (logic 0.178ns (15.794%)  route 0.949ns (84.206%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        -0.148ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.760ns = ( 11.760 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.078ns
+    Clock Pessimism Removal (CPR):    0.170ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.250ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      1.870ns (routing 0.555ns, distribution 1.315ns)
+  Clock Net Delay (Destination): 1.592ns (routing 0.499ns, distribution 1.093ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  system_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.180     0.180    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y72        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.028     0.208 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=17427, routed)       1.870     2.078    system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst/dest_clk
+    SLICE_X41Y256        FDPE                                         r  system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst/arststages_ff_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y256        FDPE (Prop_BFF2_SLICEM_C_Q)
+                                                      0.080     2.158 f  system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst/arststages_ff_reg[1]/Q
+                         net (fo=3, routed)           0.390     2.548    system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/rst_wr_reg2
+    SLICE_X43Y255        LUT3 (Prop_B6LUT_SLICEL_I2_O)
+                                                      0.098     2.646 f  system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/gc0.count_d1[4]_i_2/O
+                         net (fo=32, routed)          0.559     3.205    system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/ngwrdrst.grst.g7serrst.gnsckt_wrst.gcc_rst.sckt_wr_rst_cc_reg[1]
+    SLICE_X43Y255        FDCE                                         f  system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.curr_fwft_state_reg[0]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                     10.000    10.000 r  
+    PS8_X0Y0             PS8                          0.000    10.000 r  system_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.143    10.143    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y72        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.025    10.168 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=17427, routed)       1.592    11.760    system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/clk
+    SLICE_X43Y255        FDCE                                         r  system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.curr_fwft_state_reg[0]/C
+                         clock pessimism              0.170    11.930    
+                         clock uncertainty           -0.130    11.800    
+    SLICE_X43Y255        FDCE (Recov_EFF_SLICEL_C_CLR)
+                                                     -0.066    11.734    system_i/axi_interconnect_0/m02_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.curr_fwft_state_reg[0]
+  -------------------------------------------------------------------
+                         required time                         11.734    
+                         arrival time                          -3.205    
+  -------------------------------------------------------------------
+                         slack                                  8.529    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.191ns  (arrival time - required time)
+  Source:                 system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst/arststages_ff_reg[1]/C
+                            (rising edge-triggered cell FDPE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_fb_i_reg/PRE
+                            (removal check against rising-edge clock clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             **async_default**
+  Path Type:              Removal (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_pl_0 rise@0.000ns - clk_pl_0 rise@0.000ns)
+  Data Path Delay:        0.196ns  (logic 0.061ns (31.122%)  route 0.135ns (68.878%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        0.025ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.360ns
+    Source Clock Delay      (SCD):    1.181ns
+    Clock Pessimism Removal (CPR):    0.154ns
+  Clock Net Delay (Source):      1.042ns (routing 0.305ns, distribution 0.737ns)
+  Clock Net Delay (Destination): 1.188ns (routing 0.346ns, distribution 0.842ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  system_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.122     0.122    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y72        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.017     0.139 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=17427, routed)       1.042     1.181    system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst/dest_clk
+    SLICE_X31Y256        FDPE                                         r  system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst/arststages_ff_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X31Y256        FDPE (Prop_AFF2_SLICEM_C_Q)
+                                                      0.039     1.220 f  system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst/arststages_ff_reg[1]/Q
+                         net (fo=3, routed)           0.059     1.279    system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/rst_wr_reg2
+    SLICE_X31Y254        LUT3 (Prop_E6LUT_SLICEM_I2_O)
+                                                      0.022     1.301 f  system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/gc0.count_d1[4]_i_2/O
+                         net (fo=32, routed)          0.076     1.377    system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/ngwrdrst.grst.g7serrst.gnsckt_wrst.gcc_rst.sckt_wr_rst_cc_reg[1]
+    SLICE_X32Y254        FDPE                                         f  system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_fb_i_reg/PRE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  system_i/zynq_ultra_ps_e_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.154     0.154    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y72        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.018     0.172 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=17427, routed)       1.188     1.360    system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/clk
+    SLICE_X32Y254        FDPE                                         r  system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_fb_i_reg/C
+                         clock pessimism             -0.154     1.206    
+    SLICE_X32Y254        FDPE (Remov_EFF_SLICEL_C_PRE)
+                                                     -0.020     1.186    system_i/axi_interconnect_0/m03_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_fb_i_reg
+  -------------------------------------------------------------------
+                         required time                         -1.186    
+                         arrival time                           1.377    
+  -------------------------------------------------------------------
+                         slack                                  0.191    
+
+
 
 
 
