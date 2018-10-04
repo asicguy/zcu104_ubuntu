@@ -8,11 +8,11 @@ set_property target_language Verilog [current_project]
 set_property default_lib work [current_project]
 load_features ipintegrator
 
-set_property  ip_repo_paths ../../hls/cholesky_inverse/csynth/solution1/impl/ip/ [current_project]
+#set_property  ip_repo_paths ../../hls/cholesky_inverse/csynth/solution1/impl/ip/ [current_project]
 update_ip_catalog
 
-read_ip ../source/matinv/matinv.xci
-read_ip ../source/matinv_ram/matinv_ram.xci
+#read_ip ../source/matinv/matinv.xci
+#read_ip ../source/matinv_ram/matinv_ram.xci
 upgrade_ip -quiet  [get_ips *]
 generate_target {all} [get_ips *]
 
@@ -27,7 +27,7 @@ read_verilog -sv ../source/axi_regfile/axi_regfile_v1_0_S00_AXI.sv
 read_verilog -sv ../source/top.sv
 
 read_xdc ../source/top.xdc
-set_property used_in_synthesis false [get_files ../source/top.xdc]
+#set_property used_in_synthesis false [get_files ../source/top.xdc]
 
 close_project
 
