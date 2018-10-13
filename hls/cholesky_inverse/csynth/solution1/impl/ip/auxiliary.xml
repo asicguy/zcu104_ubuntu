@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="cholesky_inverse_top" xd:componentRef="cholesky_inverse_top" xd:initiationInterval="422" xd:clockPeriod="35.000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
-  <xd:returnValue xd:interfaceRef="ap_return" xd:busTypeRef="register" xd:dataWidth="32"/>
-  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
-  <xd:arg xd:name="A_q0" xd:originalName="A_q0" xd:direction="in" xd:interfaceRef="A_q0" xd:busTypeRef="ap_memory" xd:arraySize="16" xd:dataWidth="32"/>
-  <xd:arg xd:name="InverseA_d0" xd:originalName="InverseA_d0" xd:direction="out" xd:interfaceRef="InverseA_d0" xd:busTypeRef="ap_memory" xd:arraySize="16" xd:dataWidth="32"/>
-  <xd:latencyEstimates xd:best-case="233" xd:worst-case="421" xd:average-case="undef"/>
-  <xd:resourceEstimates xd:LUT="5285" xd:FF="2936" xd:BRAM="2" xd:DSP="27"/>
-</xd:acceleratorMap>
