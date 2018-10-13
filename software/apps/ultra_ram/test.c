@@ -33,24 +33,26 @@ int main(int argc,char** argv)
     const int Nram = ULTRA_RAM_SIZE/4;
     float write_data[Nram];
 
-    fprintf(stdout, "computing test data.\n");
-    for (int i=0; i<Nram; i++){
-        write_data[i] = rand();
-    }
-
     uint32_t* uram = pcie_addr + ULTRA_RAM;
 
-    fprintf(stdout, "loading uram\n");
-    for (int i=0; i<Nram; i++){
-        uram[i] = write_data[i];
-    }
+    // Let's test the URAM
+    int errors;
+    for (int i=0;i<10;i++){
 
-    fprintf(stdout, "checking uram\n");
-    int errors = 0;
-    for (int i=0; i<Nram; i++){
-        if (uram[i] != write_data[i]) errors++;
+    	for (int i=0; i<Nram; i++){
+        	write_data[i] = rand();
+    	}
+	
+    	for (int i=0; i<Nram; i++){
+        	uram[i] = write_data[i];
+    	}
+	
+    	errors = 0;
+    	for (int i=0; i<Nram; i++){
+        	if (uram[i] != write_data[i]) errors++;
+    	}
+    	fprintf(stdout, "errors = %d\n", errors);
     }
-    fprintf(stdout, "errors = %d\n", errors);
 
     munmap(pcie_addr,pcie_bar0_size);
 
