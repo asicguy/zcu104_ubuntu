@@ -31,30 +31,34 @@ int main(int argc,char** argv)
     write_reg(pcie_addr, LED_CONTROL, 0x02);
 
     const int Nram = ULTRA_RAM_SIZE/4;
-    float write_data[Nram];
+    uint32_t write_data[Nram];
+    uint32_t read_data[Nram];
 
     uint32_t* uram = pcie_addr + ULTRA_RAM;
 
     // Let's test the URAM
     int errors;
-    for (int i=0;i<10;i++){
+    errors = 0;
+    const int Ntest = 50;
+    for (int j=0;j<Ntest;j++){
 
+	// compute test data
     	for (int i=0; i<Nram; i++){
         	write_data[i] = rand();
     	}
 	
-    	for (int i=0; i<Nram; i++){
-        	uram[i] = write_data[i];
-    	}
+	// copy to uram
+	memcpy( uram, write_data, sizeof(write_data) );
 	
-    	errors = 0;
-    	for (int i=0; i<Nram; i++){
-        	if (uram[i] != write_data[i]) errors++;
-    	}
-    	fprintf(stdout, "errors = %d\n", errors);
+	// read and check uram data
+	memcpy( read_data, uram, sizeof(write_data) );
+    	for (int i=0; i<Nram; i++) if (read_data[i] != write_data[i]) errors++;
+
     }
+    fprintf(stdout, "Ntest = %d, errors = %d\n", Ntest, errors);
 
     munmap(pcie_addr,pcie_bar0_size);
 
     return 0;
 }
+

@@ -11,5 +11,5 @@
 #define         TEST_BRAM_SIZE      0x00001000 // 4KB
 
 #define         ULTRA_RAM           0x01000000 // Ultraram
-#define         ULTRA_RAM_SIZE      0x00200000 // 512K
+#define         ULTRA_RAM_SIZE      0x00200000 // 2MB
 
