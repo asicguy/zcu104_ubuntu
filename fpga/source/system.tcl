@@ -20,7 +20,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2018.2
+set scripts_vivado_version 2018.3
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -124,7 +124,7 @@ set bCheckIPsPassed 1
 set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
-xilinx.com:ip:axi_bram_ctrl:4.0\
+xilinx.com:ip:axi_bram_ctrl:4.1\
 xilinx.com:ip:smartconnect:1.0\
 xilinx.com:ip:blk_mem_gen:8.4\
 xilinx.com:ip:proc_sys_reset:5.0\
@@ -214,13 +214,13 @@ proc create_root_design { parentCell } {
   set axi_aresetn [ create_bd_port -dir O -from 0 -to 0 -type rst axi_aresetn ]
 
   # Create instance: axi_bram_ctrl_0, and set properties
-  set axi_bram_ctrl_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_0 ]
+  set axi_bram_ctrl_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 axi_bram_ctrl_0 ]
   set_property -dict [ list \
    CONFIG.SINGLE_PORT_BRAM {1} \
  ] $axi_bram_ctrl_0
 
   # Create instance: axi_bram_ctrl_4, and set properties
-  set axi_bram_ctrl_4 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_4 ]
+  set axi_bram_ctrl_4 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 axi_bram_ctrl_4 ]
   set_property -dict [ list \
    CONFIG.DATA_WIDTH {256} \
    CONFIG.ECC_TYPE {0} \
