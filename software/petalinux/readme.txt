@@ -14,7 +14,7 @@ These instructions provide an outline of the steps required to boot Ubuntu Linux
 
     It is called "xilinx-zcu104-v2018.2-final.bsp". Put it somewhere it can be accessed in the next command.
 
-- Now create the petalinux project.
+- Now create the petalinux project. (Note: the BSP file name changes with version.)
 
     petalinux-create --force --type project --template zynqMP --source ~/Downloads/xilinx/zcu104/xilinx-zcu104-v2018.2-final.bsp --name proj1
 
