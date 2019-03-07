@@ -14,31 +14,35 @@ The petalinux steps for this are more or less the same as for any other embedded
 
 
 
-
+- Create a new petalinux project.
 
     petalinux-create --force --type project --template zynqMP --source ~/Downloads/xilinx/zcu104/xilinx-zcu104-v2018.3-final-v2.bsp --name proj1
+
+- Adjust the petalinux configuration.
 
     cd proj1
 
     petalinux-config --get-hw-description=../../../fpga/implement/results/
 
-- At the configuration menu make the following changes.
+    - At the configuration menu make the following changes.
 
-    * Under "Image Packaging Configuration" -> 
-        "Root filesystem type" -> 
-        Select "SD Card"
-    * Under "DTG Settings" -> 
-        "Kernel Bootargs" -> 
-        Un-select "generate boot args automatically" -> 
-        Enter "user set kernel bootargs" -> Paste in the following line
-            earlycon clk_ignore_unused earlyprintk root=/dev/mmcblk0p2 rw rootwait cma=1024M
-    * Save and exit the configuration menu. Wait for configuration to complete.
+        * Under "Image Packaging Configuration" -> 
+            "Root filesystem type" -> 
+            Select "SD Card"
+        * Under "DTG Settings" -> 
+            "Kernel Bootargs" -> 
+            Un-select "generate boot args automatically" -> 
+            Enter "user set kernel bootargs" -> Paste in the following line
 
-- Now edit a file to patch a bug in the Petalinux BSP for the zcu104.
+                earlycon clk_ignore_unused earlyprintk root=/dev/mmcblk0p2 rw rootwait cma=1024M
+        * Save and exit the configuration menu. Wait for configuration to complete.
+
+- Now edit a file to patch a bug in the Petalinux BSP for the zcu104. (Perhaps this is no longer necessary.)
 
     vim project-spec/meta-user/conf/petalinuxbsp.conf
 
     * Add the followint line
+
         IMAGE_INSTALL_remove = "gstreamer-vcu-examples"
 
 - Now build the bootloader
@@ -61,7 +65,7 @@ The petalinux steps for this are more or less the same as for any other embedded
 
     petalinux-package --boot --force --fsbl --u-boot --kernel --fpga ../../../fpga/implement/results/top.bit
 
-    Now BOOT.BIN contains the FSBL, U-Boot, device tree, Linux kernel and minimal root filesystem.
+    Now BOOT.BIN contains the FSBL, U-Boot, device tree and Linux kernel.
 
 - Now burn the BOOT.BIN into the QSPI flash. 
     - Set the jumpers JP3, JP2 and JP1 to up, up, up. This puts the board into JTAG boot mode. (Note: the board won't boot from QSPI in this mode.)
