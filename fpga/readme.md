@@ -17,4 +17,4 @@ Set the environment variables. I put these in a shell script for convenience.
 - vivado -mode batch -source compile.tcl
 - That last step runs Vivado in "project flow" to write the needed output files and reports.
 - ls -lh ./results
-- The .hdf hardware definition file is needed to build the software.
+- The .hdf hardware definition file and .bit bitstream file are needed to build the software.
