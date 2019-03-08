@@ -24,18 +24,24 @@ The petalinux steps for this are more or less the same as for any other embedded
 
     petalinux-config --get-hw-description=../../../fpga/implement/results/
 
-    - At the configuration menu make the following changes.
-
-        * Under "Image Packaging Configuration" -> 
-            "Root filesystem type" -> 
-            Select "SD Card"
-        * Under "DTG Settings" -> 
-            "Kernel Bootargs" -> 
-            Un-select "generate boot args automatically" -> 
-            Enter "user set kernel bootargs" -> Paste in the following line
+    - At the configuration menu make the following changes.    - Select Subsystem AUTO Hardware Settings.
+        - Select Advanced Bootable Images Storage Settings.
+            - Select **boot** image settings.
+                - Select Image Storage Media.
+                - Select boot device as primary flash.
+            - Select **kernel** image settings.
+                - Select Image Storage Media.
+                - Select the storage device as primary flash.
+        - Under "Image Packaging Configuration" -> 
+            - "Root filesystem type" -> 
+            - Select "QSPI Flash"
+        - Under "DTG Settings" -> 
+            - "Kernel Bootargs" -> 
+            - Un-select "generate boot args automatically" -> 
+            - Enter "user set kernel bootargs" -> Paste in the following line
 
                 earlycon clk_ignore_unused earlyprintk root=/dev/mmcblk0p2 rw rootwait cma=1024M
-        * Save and exit the configuration menu. Wait for configuration to complete.
+        - Save and exit the configuration menu. Wait for configuration to complete.
 
 - Now edit a file to patch a bug in the Petalinux BSP for the zcu104. (Perhaps this is no longer necessary.)
 
@@ -68,16 +74,16 @@ The petalinux steps for this are more or less the same as for any other embedded
     Now BOOT.BIN contains the FSBL, U-Boot, device tree and Linux kernel.
 
 - Now burn the BOOT.BIN into the QSPI flash. 
-    - Set the jumpers JP3, JP2 and JP1 to up, up, up. This puts the board into JTAG boot mode. (Note: the board won't boot from QSPI in this mode.)
+    - Set mode switch SW6 [4:1] = on, on, on, on. This puts the board into JTAG boot mode. (Note: the board won't boot from QSPI in this mode.)
     - Open Vivado Hardware Manager and connect to the target.
-    - Add the QSPI flash memory. Its an S25FL, 3.3V, 4 bits wide.
-    - Add .elf file for the FSBL and the BOOT.BIN as the programming file.
+    - Add the QSPI flash memory. (mt25qu512-qspi-x4-single)
+    - Add .elf file for the FSBL and the BOOT.BIN as the programming file. (.../proj1/images/linux/zynqmp_fsbl.elf, .../proj1/images/linux/BOOT.BIN)
     - Select program device and check erase, program and verify.
     - Burn QSPI.
-    - Set the jumpers for QSPI boot mode, down, up, up.
+    - Set the jumpers for QSPI boot mode, SW6 [4:1]= on, on, off, on.
 
 - Boot the OS
-    - Connect to the usb-uart of the board using a terminal emulator, putty, screen, minicom or similar.
+    - Connect to the usb-uart of the board using a terminal emulator (putty, screen, minicom or similar).
     - Settings are 115200 baud, 8-1-none.
     - Hit the reset button and watch for text. First, u-boot starts. You can stop in u-boot by hitting any key.
     - After a timeout u-boot will start the linux kernel.  The petalinux-configure command creates the right boot command to 
