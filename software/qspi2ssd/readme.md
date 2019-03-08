@@ -1,9 +1,9 @@
 # QSPI to SSD boot instructions.
-This document describes the operations necessary to boot Linux from the QSPI memory but use the sata SSD as the non-volatile filesystem.
+This document describes the operations necessary to boot Linux from the QSPI memory but use the sata SSD as the non-volatile root filesystem.
 
-This setup is very nice since sata SSD are designed for OS support with built in wear leveling and fault management.  Using an SDCard for filesystem storage can be slow and fail spontaneously. Also, sata SSD are blazing fast and available in capacities up to 2TB. 
+This setup is very nice since sata SSD are designed for OS support with built in wear leveling and fault management.  Using an SD card for filesystem storage can be slow and fail spontaneously. Also, sata SSD are blazingly fast and available in capacities up to 2TB. 
 
-The idea is to use the soldered down QSPI flash device to hold the Petalinux FSBL, U-Boot and the Linux kernel. Then a Linaro Ubuntu filesystem is copied to the sata SSD. Finally, a small change is made to the u-boot boot command to tell Linux to use the sata SSD as the root filesystem.  
+The idea is to use the soldered down QSPI flash device to hold the Petalinux FSBL, U-Boot and the Linux kernel. Then a Linaro Ubuntu filesystem is copied to the sata SSD. 
 
 This setup should be ideal for a platform that needs a non-volatile filesystem but runs continuously or needs to log or process big data at a high rate.
 
@@ -24,24 +24,26 @@ The petalinux steps for this are more or less the same as for any other embedded
 
     petalinux-config --get-hw-description=../../../fpga/implement/results/
 
-    - At the configuration menu make the following changes.    - Select Subsystem AUTO Hardware Settings.
-        - Select Advanced Bootable Images Storage Settings.
-            - Select **boot** image settings.
-                - Select Image Storage Media.
-                - Select boot device as primary flash.
-            - Select **kernel** image settings.
-                - Select Image Storage Media.
-                - Select the storage device as primary flash.
+    - At the configuration menu make the following changes.    
+        - Select Subsystem AUTO Hardware Settings.
+            - Select Advanced Bootable Images Storage Settings.
+                - Select **boot** image settings.
+                    - Select Image Storage Media.
+                    - Select boot device as primary flash.
+                - Select **kernel** image settings.
+                    - Select Image Storage Media.
+                    - Select the storage device as primary flash.
         - Under "Image Packaging Configuration" -> 
             - "Root filesystem type" -> 
-            - Select "QSPI Flash"
+            - Select "Other"
         - Under "DTG Settings" -> 
             - "Kernel Bootargs" -> 
             - Un-select "generate boot args automatically" -> 
-            - Enter "user set kernel bootargs" -> Paste in the following line
+            - Enter "user set kernel bootargs" -> Paste in the following line. (This tells u-boot to start the kernel with the root filesystem on the SSD.)
 
-                earlycon clk_ignore_unused earlyprintk root=/dev/mmcblk0p2 rw rootwait cma=1024M
-        - Save and exit the configuration menu. Wait for configuration to complete.
+                earlycon clk_ignore_unused earlyprintk root=/dev/sda2 rw rootfstype=ext4 rootwait cma=1024M
+
+    - Save and exit the configuration menu. Wait for configuration to complete.
 
 - Now edit a file to patch a bug in the Petalinux BSP for the zcu104. (Perhaps this is no longer necessary.)
 
@@ -82,60 +84,22 @@ The petalinux steps for this are more or less the same as for any other embedded
     - Burn QSPI.
     - Set the jumpers for QSPI boot mode, SW6 [4:1]= on, on, off, on.
 
-- Boot the OS
-    - Connect to the usb-uart of the board using a terminal emulator (putty, screen, minicom or similar).
-    - Settings are 115200 baud, 8-1-none.
-    - Hit the reset button and watch for text. First, u-boot starts. You can stop in u-boot by hitting any key.
-    - After a timeout u-boot will start the linux kernel.  The petalinux-configure command creates the right boot command to 
-      point to the ram filesystem, etc.
-- Now create the boot files that u-boot expects. 
+## Root Filesystem
 
-
-
-
-
-## U-Boot 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- Now copy the boot files to the SD card.
-
-    cp images/linux/BOOT.BIN /media/pedro/BOOT/
-    cp images/linux/image.ub /media/pedro/BOOT/
-
-    It is assumed that you already partitioned the SD card. 
-    - sudo gparted  (make sure you have the correct drive selected!)
-    - First partition called BOOT, FAT32, 512MB
-    - Second partition called rootfs, ext4, use the rest of the card.
 
 - Now down load the root filesystem. It is 360MB.
 
     wget https://releases.linaro.org/debian/images/developer-arm64/latest/linaro-stretch-developer-20180416-89.tar.gz
 
-- Uncompress the root filesystem preserving file attributes and ownership.
+- Uncompress the root filesystem **preserving file attributes and ownership**.
 
     sudo tar --preserve -zxvf linaro-stretch-developer-20180416-89.tar.gz
 
-- Copy the root filesystem onto the SD card preserving file attributes and ownership.
+- Copy the root filesystem onto the SSD **preserving file attributes and ownership**.  This assumes the M.2 sata SSD is connected to the workstation using an M.2 to sata adapter and mounted at /media/xxxx/rootfs,
 
-    sudo cp --recursive --preserve binary/* /media/pedro/rootfs/
+    sudo cp --recursive --preserve binary/* /media/xxxx/rootfs/
 
-
-- Eject the SD card from your workstation and install it in the ZCU104.
+- Install the SSD in the ZCU104.
 
 - Connect to the USB Uart port on the zcu104 and start a terminal emulator. I use screen sometimes.
 
