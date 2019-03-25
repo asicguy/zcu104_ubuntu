@@ -119,8 +119,14 @@ The petalinux steps for this are more or less the same as for any other embedded
 
 - It is a good idea to create a user for yourself and give it sudoer privileges.
 
-    adduser myuser
+    adduser -m -d /home/myuser myuser
     usermod -aG sudo myuser
+
+- There is also something wrong with the permissions on some directories. You may need these commands to ssh into a new user account.
+
+    chmod 755 /
+    chmod 755 /bin
+    chmod 755 /lib
 
 - The serial  terminal is limiting so I like to ssh into the board. First, find the ip address of the zcu104.
 
