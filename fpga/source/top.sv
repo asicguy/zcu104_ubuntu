@@ -3,52 +3,53 @@ module top (
     output logic [3:0] led
 );
 
-  logic [39:0]M00_AXI_0_araddr;
-  logic [2:0]M00_AXI_0_arprot;
-  logic M00_AXI_0_arready;
-  logic M00_AXI_0_arvalid;
-  logic [39:0]M00_AXI_0_awaddr;
-  logic [2:0]M00_AXI_0_awprot;
-  logic M00_AXI_0_awready;
-  logic M00_AXI_0_awvalid;
-  logic M00_AXI_0_bready;
-  logic [1:0]M00_AXI_0_bresp;
-  logic M00_AXI_0_bvalid;
-  logic [31:0]M00_AXI_0_rdata;
-  logic M00_AXI_0_rready;
-  logic [1:0]M00_AXI_0_rresp;
-  logic M00_AXI_0_rvalid;
-  logic [31:0]M00_AXI_0_wdata;
-  logic M00_AXI_0_wready;
-  logic [3:0]M00_AXI_0_wstrb;
-  logic M00_AXI_0_wvalid;
-  
-  logic axi_aclk;
-  logic [0:0]axi_aresetn;
+    logic [39:0]    M00_AXI_araddr;
+    logic [2:0]     M00_AXI_arprot;
+    logic           M00_AXI_arready;
+    logic           M00_AXI_arvalid;
+    logic [39:0]    M00_AXI_awaddr;
+    logic [2:0]     M00_AXI_awprot;
+    logic           M00_AXI_awready;
+    logic           M00_AXI_awvalid;
+    logic           M00_AXI_bready;
+    logic [1:0]     M00_AXI_bresp;
+    logic           M00_AXI_bvalid;
+    logic [31:0]    M00_AXI_rdata;
+    logic           M00_AXI_rready;
+    logic [1:0]     M00_AXI_rresp;
+    logic           M00_AXI_rvalid;
+    logic [31:0]    M00_AXI_wdata;
+    logic           M00_AXI_wready;
+    logic [3:0]     M00_AXI_wstrb;
+    logic           M00_AXI_wvalid;
+
+    logic           axi_aclk;
+    logic [0:0]     axi_aresetn;
     
 
-  system system_i(
-        .M00_AXI_0_araddr(M00_AXI_0_araddr),
-        .M00_AXI_0_arprot(M00_AXI_0_arprot),
-        .M00_AXI_0_arready(M00_AXI_0_arready),
-        .M00_AXI_0_arvalid(M00_AXI_0_arvalid),
-        .M00_AXI_0_awaddr(M00_AXI_0_awaddr),
-        .M00_AXI_0_awprot(M00_AXI_0_awprot),
-        .M00_AXI_0_awready(M00_AXI_0_awready),
-        .M00_AXI_0_awvalid(M00_AXI_0_awvalid),
-        .M00_AXI_0_bready(M00_AXI_0_bready),
-        .M00_AXI_0_bresp(M00_AXI_0_bresp),
-        .M00_AXI_0_bvalid(M00_AXI_0_bvalid),
-        .M00_AXI_0_rdata(M00_AXI_0_rdata),
-        .M00_AXI_0_rready(M00_AXI_0_rready),
-        .M00_AXI_0_rresp(M00_AXI_0_rresp),
-        .M00_AXI_0_rvalid(M00_AXI_0_rvalid),
-        .M00_AXI_0_wdata(M00_AXI_0_wdata),
-        .M00_AXI_0_wready(M00_AXI_0_wready),
-        .M00_AXI_0_wstrb(M00_AXI_0_wstrb),
-        .M00_AXI_0_wvalid(M00_AXI_0_wvalid),
-        .axi_aclk(axi_aclk),
-        .axi_aresetn(axi_aresetn)
+    system system_i (
+        .M00_AXI_araddr     (M00_AXI_araddr),
+        .M00_AXI_arprot     (M00_AXI_arprot),
+        .M00_AXI_arready    (M00_AXI_arready),
+        .M00_AXI_arvalid    (M00_AXI_arvalid),
+        .M00_AXI_awaddr     (M00_AXI_awaddr),
+        .M00_AXI_awprot     (M00_AXI_awprot),
+        .M00_AXI_awready    (M00_AXI_awready),
+        .M00_AXI_awvalid    (M00_AXI_awvalid),
+        .M00_AXI_bready     (M00_AXI_bready),
+        .M00_AXI_bresp      (M00_AXI_bresp),
+        .M00_AXI_bvalid     (M00_AXI_bvalid),
+        .M00_AXI_rdata      (M00_AXI_rdata),
+        .M00_AXI_rready     (M00_AXI_rready),
+        .M00_AXI_rresp      (M00_AXI_rresp),
+        .M00_AXI_rvalid     (M00_AXI_rvalid),
+        .M00_AXI_wdata      (M00_AXI_wdata),
+        .M00_AXI_wready     (M00_AXI_wready),
+        .M00_AXI_wstrb      (M00_AXI_wstrb),
+        .M00_AXI_wvalid     (M00_AXI_wvalid),
+        //
+        .axi_aclk           (axi_aclk),
+        .axi_aresetn        (axi_aresetn)
     );
     
     logic [27:0] led_count;
