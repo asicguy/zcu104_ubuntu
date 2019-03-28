@@ -34,7 +34,7 @@ int main(int argc,char** argv)
     uint32_t write_data[Nram];
     uint32_t read_data[Nram];
 
-    uint32_t* uram = pcie_addr + ULTRA_RAM;
+    uint32_t* uram = pcie_addr + ULTRA_RAM_OFFSET;
 
     // Let's test the URAM
     int errors;
