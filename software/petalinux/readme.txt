@@ -16,7 +16,7 @@ These instructions provide an outline of the steps required to boot Ubuntu Linux
 
 - Now create the petalinux project. (Note: the BSP file name changes with version.)
 
-    petalinux-create --force --type project --template zynqMP --source ~/Downloads/xilinx/zcu104/xilinx-zcu104-v2018.2-final.bsp --name proj1
+    petalinux-create --force --type project --template zynqMP --source ~/Downloads/xilinx/zcu104/xilinx-zcu104-v2018.3-final-v2.bsp --name proj1
 
 - Now configure the petalinux project with the settings we need to run Ubuntu from the SD card.
 
