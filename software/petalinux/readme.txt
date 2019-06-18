@@ -2,7 +2,9 @@ These instructions provide an outline of the steps required to boot Ubuntu Linux
 
 
 
-- Download and install Xilinx Petalinux 2018.2.
+- Download and install Xilinx Petalinux 2019.1. See "PetaLinux Tools Documentation Reference Guide", (UG1144).
+
+    Note there is an error in the installation instructions for Ubuntu. You need to install the gawk package not awk.
 
 - Set up your environment variables. Something like this depending on where you installed Petalinux.
 
@@ -16,7 +18,7 @@ These instructions provide an outline of the steps required to boot Ubuntu Linux
 
 - Now create the petalinux project. (Note: the BSP file name changes with version.)
 
-    petalinux-create --force --type project --template zynqMP --source ~/Downloads/xilinx/zcu104/xilinx-zcu104-v2018.3-final-v2.bsp --name proj1
+    petalinux-create --force --type project --template zynqMP --source ~/Downloads/xilinx/zcu104/xilinx-zcu104-v2019.1-final.bsp --name proj1
 
 - Now configure the petalinux project with the settings we need to run Ubuntu from the SD card.
 
@@ -61,7 +63,7 @@ These instructions provide an outline of the steps required to boot Ubuntu Linux
 
 - Now create the boot files that u-boot expects. 
 
-    petalinux-package --boot --fsbl images/linux/zynqmp_fsbl.elf --u-boot images/linux/u-boot.elf
+    petalinux-package --force --boot --fsbl images/linux/zynqmp_fsbl.elf --u-boot images/linux/u-boot.elf
 
     BOOT.BIN contains the ATF, PMUFW, FSBL, U-Boot.
     image.ub contains the device tree and Linux kernel.
