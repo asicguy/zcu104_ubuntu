@@ -14,7 +14,7 @@ These instructions provide an outline of the steps required to boot Ubuntu Linux
 
     https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html
 
-    It is called "xilinx-zcu104-v2018.2-final.bsp". Put it somewhere it can be accessed in the next command.
+    It is called "xilinx-zcu104-v2019.1-final.bsp". Put it somewhere it can be accessed in the next command.
 
 - Now create the petalinux project. (Note: the BSP file name changes with version.)
 
